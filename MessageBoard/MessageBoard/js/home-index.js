@@ -1,14 +1,14 @@
 ﻿//home index controller
 
-var module = angular.module("homeIndex", []);
+//var module = angular.module("homeIndex", []);
 
-module.config(function($routeProvider) {
-    $routeProvider.when("/", {
-        controller: "topicsController",
-        templateUrl: "/templates/topicsView.html"
-});
-$routeProvider.otherwise("/");
-});
+//module.config(function($routeProvider) {
+//    $routeProvider.when("/", {
+//        controller: "topicsController",
+//        templateUrl: "/templates/topicsView.html"
+//});
+//$routeProvider.otherwise({ redirectTo: "/" });
+//});
 
 function topicsController($scope, $http) {
     $scope.data = [];
@@ -29,5 +29,5 @@ function topicsController($scope, $http) {
 }
 
 //this bit is required in new version of angular to hookup the controller
-indexHomeController.$inject = ['$scope', '$http'];
-angular.module('app', []).controller('topicsController', topicsController)
+topicsController.$inject = ['$scope', '$http'];
+angular.module("app", []).controller('topicsController', topicsController);
