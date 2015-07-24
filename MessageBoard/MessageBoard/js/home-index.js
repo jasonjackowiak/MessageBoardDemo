@@ -4,19 +4,18 @@ var module = angular.module('homeIndex', ['ngRoute']);
 
 module.config(function ($routeProvider) {
     $routeProvider.when('/', {
-        controller: 'test',
+        controller: 'topicsController',
         templateUrl: '/templates/topicsView.html'
     });
     $routeProvider.otherwise({ redirectTo: '/' });
 });
 
-function test() {
-    alert("hello!");
-}
-
 function topicsController($scope, $http) {
     $scope.data = [];
     $scope.isBusy = true;
+
+    var self = this;
+    self.message = "The app routing is working!";
 
     $http.get("api/v1/topics?IncludeReplies=true")
         .then(function (result) {
@@ -32,7 +31,7 @@ function topicsController($scope, $http) {
     });
 }
 
-module.$inject = ['$routeProvider'];
-//this bit is required in new version of angular to hookup the controller
-topicsController.$inject = ['$scope', '$http'];
-//angular.module("app", []).controller('topicsController', topicsController);
+angular.module("homeIndex", ['ngRoute']).controller('topicsController', topicsController);
+//module.$inject = ['$routeProvider'];
+////this bit is required in new version of angular to hookup the controller
+//topicsController.$inject = ['$scope', '$http'];
