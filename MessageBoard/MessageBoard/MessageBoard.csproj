@@ -1172,6 +1172,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="templates\newTopicView.html" />
     <Content Include="templates\topicsView.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
