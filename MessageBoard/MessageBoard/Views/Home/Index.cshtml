@@ -5,7 +5,72 @@
 }
 
 @section Scripts {
-    <script src="~/js/home-index.js"></script>
+    <script>
+
+
+        //function topicsController($scope, $http) {
+        //    $scope.data = [];
+        //    $scope.isBusy = true;
+
+        //    var self = this;
+        //    self.message = "The app routing is working!";
+
+        //    $scope.message = self.message;
+
+        //    $http.get("api/v1/topics?IncludeReplies=true")
+        //        .then(function (result) {
+        //            //success
+        //            angular.copy(result.data, $scope.data);
+        //        },
+        //            function () {
+        //                //fail
+        //                alert("FAIL!!");
+        //            })
+        //    .then(function () {
+        //        $scope.isBusy = false;
+        //    });
+        //}
+
+    </script>
+<script src="~/js/test.js"></script>
 }
 
-<div data-ng-view=""></div>
+<div><ng-view></ng-view></div>
+
+
+@*<div data-ng-controller="topicsController">
+    <div>
+        <div class="message-header">
+            <h1>Message Board</h1>
+            <p class="lead">Latest Messages...</p>
+            <div>{{ topicsController.message }}</div>
+            <div>Message Count: {{ data.length }}</div>
+        </div>
+
+        <div class="progress progress-striped active" data-ng-show="isBusy">
+            <div class="bar" style="width: 100%;"></div>
+        </div>
+
+        <div class="messages">
+            <div class="message row" data-ng-repeat="i in data">
+                <div class="title span10">
+                    {{ i.title }}
+                </div>
+                <div class="date span2">
+                    {{ i.created | date:"medium"}}
+                </div>
+                <div class="contents span12">
+                    {{ i.body }}
+                </div>
+                <div class="toolbar span12"><button class="btn-primary btn reply-button span1">Reply</button></div>
+                <div class="replies span12">
+                    <div class="reply" data-ng-repeat="r in i.replies">
+                        <div class="created pull-right">{{ r.created  | date:"medium"}}</div>
+                        <div class="content">{{ r.body }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+@*<div data-ng-view=""></div>*@
