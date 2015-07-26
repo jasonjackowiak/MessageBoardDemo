@@ -41,11 +41,21 @@ function topicsController($scope, $http) {
 };
 
 function newTopicController($scope, $http, $window) {
-    $scope.newTopicController = {};
+    $scope.newTopic = {};
 
     $scope.save = function() {
-        alert($scope.newTopic.title);
-    }
+        $http.post("/api/v1/topics", $scope.newTopic)
+            .then(function(result) {
+                    //success
+                    var newTopic = result.data;
+                    //TODO merge with existing list of topics
+                    $window.location = "/";
+                },
+                function() {
+                    //error
+                    alert("cannot save new topic");
+                });
+    };
 }
 
 //bind the controller to the function
