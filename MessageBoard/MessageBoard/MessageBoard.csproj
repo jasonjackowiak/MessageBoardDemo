@@ -330,8 +330,7 @@
       <DependentUpon>Site.css</DependentUpon>
     </Content>
     <None Include="Content\Site.less" />
-    <Content Include="js\test.js" />
-    <Content Include="js\home-index.js" />
+    <Content Include="js\topics.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -1173,7 +1172,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="templates\App.html" />
     <Content Include="templates\topicsView.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
