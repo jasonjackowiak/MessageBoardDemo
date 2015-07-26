@@ -17,23 +17,43 @@ thing.config(function ($routeProvider) {
     $routeProvider.otherwise({ redirectTo: "/" });
 });
 
-function topicsController($scope, $http) {
-    $scope.data = [];
+thing.factory("dataService", function ($http, $q) {
+    var _topics = [];
+
+    var _getTopics = function () {
+
+        var deferred = $q.defer();
+
+        $http.get("api/v1/topics?IncludeReplies=true")
+            .then(function (result) {
+                //success
+                angular.copy(result.data, _topics);
+                deferred.resolve();
+            },
+                function () {
+                    //fail
+                    deferred.reject();
+                });
+        return deferred.promise;
+    };
+
+    return {
+        topics: _topics,
+        getTopics: _getTopics
+    };
+});
+
+function topicsController($scope, $http, dataService) {
+    $scope.data = dataService;
     $scope.isBusy = true;
 
-    var self = this;
-    self.message = "The app routing is working!";
+    dataService.getTopics()
+        .then(function () {
 
-    $scope.message = self.message;
-
-    $http.get("api/v1/topics?IncludeReplies=true")
-        .then(function (result) {
-            //success
-            angular.copy(result.data, $scope.data);
         },
             function () {
                 //fail
-                alert("FAIL!!");
+                alert("could not load topics");
             })
         .then(function () {
             $scope.isBusy = false;
@@ -43,15 +63,15 @@ function topicsController($scope, $http) {
 function newTopicController($scope, $http, $window) {
     $scope.newTopic = {};
 
-    $scope.save = function() {
+    $scope.save = function () {
         $http.post("/api/v1/topics", $scope.newTopic)
-            .then(function(result) {
-                    //success
-                    var newTopic = result.data;
-                    //TODO merge with existing list of topics
-                    $window.location = "/";
-                },
-                function() {
+            .then(function (result) {
+                //success
+                var newTopic = result.data;
+                //TODO merge with existing list of topics
+                $window.location = "/";
+            },
+                function () {
                     //error
                     alert("cannot save new topic");
                 });
