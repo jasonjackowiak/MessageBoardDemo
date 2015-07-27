@@ -72,32 +72,61 @@ function topicsController($scope, $http, dataService) {
     if (dataService.isReady() == false) {
         $scope.isBusy = true;
         dataService.getTopics()
-            .then(function () {
-                //success
-            },
-                function () {
+            .then(function() {
+                    //success
+                },
+                function() {
                     //fail
                     alert("could not load topics");
                 })
-            .then(function () {
+            .then(function() {
                 $scope.isBusy = false;
             });
     }
+}
+
+function topicsController($scope, $http) {
+    $scope.data = [];
+    $scope.isBusy = true;
+
+    var self = this;
+    self.message = "The app routing is working!";
+
+    $scope.message = self.message;
+
+    $http.get("api/v1/topics?IncludeReplies=true")
+        .then(function (result) {
+            //success
+            angular.copy(result.data, $scope.data);
+        },
+            function () {
+                //fail
+                alert("FAIL!!");
+            })
+        .then(function () {
+            $scope.isBusy = false;
+        });
 };
 
 function newTopicController($scope, $http, $window, dataService) {
     $scope.newTopic = {};
 
     $scope.save = function() {
-        dataService.addTopic($sopce.newTopic)
+        dataService.addTopic($scope.newTopic)
             .then(function() {
-                    //success
-                    $window.location = "/";
-                },
-                function() {
-                    //error
-                    alert("could not save the new topic");
-                });
+                //success
+                $http.post("/api/v1/topics", $scope.newTopic)
+                    .then(function(result) {
+                            //success
+                            var newTopic = result.data;
+                            //TODO merge with existing list of topics
+                            $window.location = "/";
+                        },
+                        function() {
+                            //error
+                            alert("could not save the new topic");
+                        });
+            });
     };
 };
 
