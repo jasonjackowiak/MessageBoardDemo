@@ -62,11 +62,54 @@ thing.factory("dataService", function ($http, $q) {
         return deferred.promise;
     };
 
+    function _findTopic(id) {
+        var found = null;
+
+        //this is a jquery iteration function
+        $.each(_topics, function(i, item) {
+            if (item.id == id) {
+                found = item;
+                return false;
+            }
+        });
+        return found;
+    };
+
+    var _getTopicById = function(id) {
+        var deferred = $q.defer();
+
+        if (_isReady()) {
+            var topic = findTopic(id);
+            if (topic) {
+                deferred.resolve(topic);
+            } else {
+                deferred.reject();
+            }
+        } else {
+            _getTopics()
+                .then(function() {
+                    //success
+                    var topic = findTopic(id);
+                    if (topic) {
+                        deferred.resolve(topic);
+                    } else {
+                        deferred.reject();
+                    }
+                    },
+                    function() {
+                        deferred.reject();
+                    });
+        }
+
+        return deferred.promise;
+    };
+
     return {
         topics: _topics,
         getTopics: _getTopics,
         addTopic: _addTopic,
-        isReady: _isReady
+        isReady: _isReady,
+        getTopicById: _getTopicById
     };
 });
 
@@ -105,6 +148,21 @@ function newTopicController($scope, $http, $window, dataService) {
             });
     };
 };
+
+function singleTopicController($scope, dataService, $window, $routeParams) {
+    $scope.topics = null;
+    $scope.newReply = {};
+
+    dataService.getTopicById($routeParams.id)
+    .then(function(topic) {
+        //success
+            $scope.topics = topic;
+        },
+    function () {
+        //error
+        $window.location = "#/";
+    })
+}
 
 //bind the controller to the function
 thing.controller('topicsController', topicsController);
