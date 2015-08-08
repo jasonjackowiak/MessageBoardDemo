@@ -1,26 +1,24 @@
-﻿
 var thing = angular.module('homeIndex', ['ngRoute']);
 
 thing.config(function ($routeProvider) {
     $routeProvider.when("/",
-        {
-            templateUrl: "/templates/topicsView.html",
-            controller: "topicsController",
-            controllerAs: "app"
-        }
-    );
+    {
+        templateUrl: "/templates/topicsView.html",
+        controller: "topicsController",
+        controllerAs: "app"
+    });
     $routeProvider.when("/newmessage",
     {
         templateUrl: "/templates/newTopicView.html",
         controller: "newTopicController",
     });
     $routeProvider.when("/message/:id",
-{
-    templateUrl: "/templates/singleTopicView.html",
-    controller: "singleTopicController",
-});
+    {
+        templateUrl: "/templates/singleTopicView.html",
+        controller: "singleTopicController",
+    });
     $routeProvider.otherwise({ redirectTo: "/" });
-});
+    });
 
 thing.factory("dataService", function ($http, $q) {
     var _topics = [];
@@ -78,8 +76,13 @@ thing.factory("dataService", function ($http, $q) {
     var _getTopicById = function(id) {
         var deferred = $q.defer();
 
+        //this is a hack cos it isnt being set to true for some reason
+        //_isInit = true;
+        //var topic = "test";
+        //deferred.resolve(topic);
+
         if (_isReady()) {
-            var topic = findTopic(id);
+            var topic = _findTopic(id);
             if (topic) {
                 deferred.resolve(topic);
             } else {
@@ -89,7 +92,7 @@ thing.factory("dataService", function ($http, $q) {
             _getTopics()
                 .then(function() {
                     //success
-                    var topic = findTopic(id);
+                    var topic = _findTopic(id);
                     if (topic) {
                         deferred.resolve(topic);
                     } else {
@@ -136,34 +139,35 @@ function topicsController($scope, $http, dataService) {
 function newTopicController($scope, $http, $window, dataService) {
     $scope.newTopic = {};
 
-    $scope.save = function () {
+    $scope.save = function() {
         dataService.addTopic($scope.newTopic)
-            .then(function () {
-                //success
-                $window.location = "#/";
-            },
-            function () {
-                //error
-                alert("could not save the new topic");
-            });
+            .then(function() {
+                    //success
+                    $window.location = "#/";
+                },
+                function() {
+                    //error
+                    alert("could not save the new topic");
+                });
     };
 };
 
 function singleTopicController($scope, dataService, $window, $routeParams) {
-    $scope.topics = null;
+    $scope.topic = null;
     $scope.newReply = {};
 
     dataService.getTopicById($routeParams.id)
-    .then(function(topic) {
-        //success
-            $scope.topics = topic;
-        },
-    function () {
-        //error
-        $window.location = "#/";
-    })
-}
+        .then(function(topic) {
+                //success
+                $scope.topic = topic;
+            },
+            function() {
+                //error
+                $window.location = "#/";
+            });
+};
 
 //bind the controller to the function
 thing.controller('topicsController', topicsController);
 thing.controller('newTopicController', newTopicController);
+thing.controller('singleTopicController', singleTopicController);
