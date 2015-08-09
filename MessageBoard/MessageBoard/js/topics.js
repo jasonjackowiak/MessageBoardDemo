@@ -107,12 +107,29 @@ thing.factory("dataService", function ($http, $q) {
         return deferred.promise;
     };
 
+    var _saveReply = function(topic, newReply) {
+        var deferred = $q.defer();
+
+        $http.post("/api/v1/topics/" + topic.id + "/replies", newReply)
+            .then(function(result) {
+                    //success
+                    if (topic.replies == null) topic.replies = [];
+                    topic.replies.push(result.data);
+                    deferred.resolve(result.data);
+                },
+                function() {
+                    //error
+                    deferred.reject();
+                });
+    };
+
     return {
         topics: _topics,
         getTopics: _getTopics,
         addTopic: _addTopic,
         isReady: _isReady,
-        getTopicById: _getTopicById
+        getTopicById: _getTopicById,
+        saveReply: _saveReply
     };
 });
 
@@ -165,6 +182,18 @@ function singleTopicController($scope, dataService, $window, $routeParams) {
                 //error
                 $window.location = "#/";
             });
+
+    $scope.addReply = function() {
+        dataService.saveReply($scope.topic, $scope.newReply)
+            .then(function() {
+                //success
+                $scope.newReply.body = "";
+            },
+                function() {
+                    //error
+                    alert("Could not save the new reply");
+                });
+    };
 };
 
 //bind the controller to the function
