@@ -135,7 +135,6 @@ C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard\bin\Micro
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard\obj\Debug\MessageBoard.csprojResolveAssemblyReference.cache
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard\obj\Debug\MessageBoard.Data.initial.resources
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard\obj\Debug\MessageBoard.csproj.GenerateResource.Cache
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard\obj\Debug\MessageBoard.dll

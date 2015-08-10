@@ -51,3 +51,4 @@ C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\obj\Debug\MessageBoard.Tests.csprojResolveAssemblyReference.cache
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\obj\Debug\MessageBoard.Tests.dll
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\obj\Debug\MessageBoard.Tests.pdb
+C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\MessageBoard.Tests.dll.config
