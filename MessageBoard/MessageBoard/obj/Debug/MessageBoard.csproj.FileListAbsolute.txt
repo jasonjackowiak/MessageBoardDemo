@@ -139,3 +139,4 @@ C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard\obj\Debug
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard\obj\Debug\MessageBoard.csproj.GenerateResource.Cache
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard\obj\Debug\MessageBoard.dll
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard\obj\Debug\MessageBoard.pdb
+C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard\obj\Debug\MessageBoard.csprojResolveAssemblyReference.cache
