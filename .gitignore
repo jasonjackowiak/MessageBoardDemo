@@ -41,3 +41,12 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Azure migration folder
+Migrations/
+
+# misc
+bin
+obj
+Debug
+*.dll
