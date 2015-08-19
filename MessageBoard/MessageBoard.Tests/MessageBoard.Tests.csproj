@@ -102,9 +102,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MessageBoard\MessageBoard.csproj">
+    <ProjectReference Include="..\MessageBoard\EvilJasonBuck.csproj">
       <Project>{0aa5c6b0-a4cf-49fa-b01e-c07f3e04bf43}</Project>
-      <Name>MessageBoard</Name>
+      <Name>EvilJasonBuck</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

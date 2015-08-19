@@ -20,10 +20,10 @@ namespace MessageBoard
             );
 
             routes.MapRoute(
-    name: "MyMessages",
-    url: "MyMessages",
-    defaults: new { controller = "Home", action = "MyMessages" }
-    );
+            name: "MyMessages",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "MyMessages", id = UrlParameter.Optional }
+            );
         }
     }
 }

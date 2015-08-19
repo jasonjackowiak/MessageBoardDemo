@@ -23,12 +23,7 @@ namespace MessageBoard.Controllers
         //[Authorize]
         public ActionResult Index()
         {
-            var topics = _repo.GetTopics()
-                .OrderByDescending(t => t.Created)
-                    .Take(25)
-                    .ToList();
-
-            return View(topics);
+            return View();
         }
 
         public ActionResult About()
@@ -55,7 +50,12 @@ namespace MessageBoard.Controllers
 
         public ActionResult MyMessages()
         {
-            return View();
+            var topics = _repo.GetTopics()
+    .OrderByDescending(t => t.Created)
+        .Take(25)
+        .ToList();
+
+            return View(topics);
         }
     }
 }

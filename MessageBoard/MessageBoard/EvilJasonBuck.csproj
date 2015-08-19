@@ -192,10 +192,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\RepliesController.cs" />
     <Compile Include="Controllers\TopicsController.cs" />
+    <Compile Include="Data\CharacterAttribute.cs" />
+    <Compile Include="Data\CharacterClass.cs" />
     <Compile Include="Data\IMessageBoardRepository.cs" />
     <Compile Include="Data\MessageBoardContext.cs" />
     <Compile Include="Data\MessageBoardRepository.cs" />
     <Compile Include="Data\MessageBoardsMigrationConfiguration.cs" />
+    <Compile Include="Data\Point.cs" />
     <Compile Include="Data\Reply.cs" />
     <Compile Include="Migrations\201507131123279_initial.cs" />
     <Compile Include="Migrations\201507131123279_initial.Designer.cs">

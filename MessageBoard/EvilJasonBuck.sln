@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageBoard", "MessageBoard\MessageBoard.csproj", "{0AA5C6B0-A4CF-49FA-B01E-C07F3E04BF43}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvilJasonBuck", "MessageBoard\EvilJasonBuck.csproj", "{0AA5C6B0-A4CF-49FA-B01E-C07F3E04BF43}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageBoard.Tests", "MessageBoard.Tests\MessageBoard.Tests.csproj", "{B9E1B04C-23FE-4370-9FEC-15D7F00BACD7}"
 EndProject

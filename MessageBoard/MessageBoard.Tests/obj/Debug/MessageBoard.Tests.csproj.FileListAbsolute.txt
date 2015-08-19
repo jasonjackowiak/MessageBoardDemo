@@ -1,3 +1,4 @@
+C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\MessageBoard.Tests.dll.config
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\MessageBoard.Tests.dll
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\MessageBoard.Tests.pdb
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\MessageBoard.dll
@@ -6,7 +7,6 @@ C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\System.Net.Http.Formatting.dll
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\System.Web.Helpers.dll
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\System.Web.Http.dll
-C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\System.Web.Http.WebHost.dll
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\System.Web.Mvc.dll
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\System.Web.Razor.dll
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
@@ -23,6 +23,7 @@ C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\Owin.dll
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\WebActivatorEx.dll
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\Microsoft.Owin.Security.dll
+C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\System.Web.Http.WebHost.dll
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\WebApiContrib.IoC.Ninject.dll
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.dll
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
@@ -31,7 +32,6 @@ C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\System.Web.Helpers.xml
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\System.Web.Http.xml
-C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\System.Web.Http.WebHost.xml
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\System.Web.Mvc.xml
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\System.Web.Razor.xml
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\System.Web.WebPages.xml
@@ -46,9 +46,9 @@ C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\Ninject.Web.Common.xml
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\Ninject.xml
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\Microsoft.Owin.Security.xml
+C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\System.Web.Http.WebHost.xml
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\obj\Debug\MessageBoard.Tests.csprojResolveAssemblyReference.cache
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\obj\Debug\MessageBoard.Tests.dll
 C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\obj\Debug\MessageBoard.Tests.pdb
-C:\Users\J\Documents\GitHub\MessageBoardDemo\MessageBoard\MessageBoard.Tests\bin\Debug\MessageBoard.Tests.dll.config
