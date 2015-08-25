@@ -50,3 +50,6 @@ bin
 obj
 Debug
 *.dll
+*.pdb
+MessageBoard/MessageBoard/obj/Debug/MessageBoard.dll
+*.pdb

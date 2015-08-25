@@ -24,10 +24,10 @@ namespace MessageBoard
             );
 
             config.Routes.MapHttpRoute(
-    name: "DefaultRoute",
-    routeTemplate: "api/v1/{controller}/{id}",
-    defaults: new { id = RouteParameter.Optional }
-);
+                name: "DefaultRoute",
+                routeTemplate: "api/v1/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
         }
     }
 }
