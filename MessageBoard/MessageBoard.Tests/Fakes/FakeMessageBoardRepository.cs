@@ -6,11 +6,11 @@ using MessageBoard.Data;
 
 namespace MessageBoard.Tests.Fakes
 {
-  public class FakeMessageBoardRepository : IMessageBoardRepository
-  {
-    public IQueryable<Reply> GetRepliesByTopic(int topicId)
+    public class FakeMessageBoardRepository : IMessageBoardRepository
     {
-      return new Reply[]
+        public IQueryable<Reply> GetRepliesByTopic(int topicId)
+        {
+            return new Reply[]
       {
         new Reply()
         {
@@ -34,11 +34,11 @@ namespace MessageBoard.Tests.Fakes
           Created = DateTime.UtcNow
         },
       }.AsQueryable();
-    }
+        }
 
-    public IQueryable<Topic> GetTopics()
-    {
-      return new Topic[]
+        public IQueryable<Topic> GetTopics()
+        {
+            return new Topic[]
       {
         new Topic()
         {
@@ -62,11 +62,11 @@ namespace MessageBoard.Tests.Fakes
           Created = DateTime.UtcNow
         },
       }.AsQueryable();
-    }
+        }
 
-    public IQueryable<Topic> GetTopicsWithReplies()
-    {
-      return new Topic[]
+        public IQueryable<Topic> GetTopicsWithReplies()
+        {
+            return new Topic[]
       {
         new Topic()
         {
@@ -116,25 +116,52 @@ namespace MessageBoard.Tests.Fakes
           Replies = new List<Reply>()
         },
       }.AsQueryable();
-    }
+        }
 
-    public bool Save()
-    {
-      return true;
-    }
+        public bool Save()
+        {
+            return true;
+        }
 
-    public bool AddTopic(Topic topic)
-    {
-      topic.Id = new Random().Next(5, 1000);
-      topic.Created = DateTime.UtcNow;
-      return true;
-    }
+        public bool AddTopic(Topic topic)
+        {
+            topic.Id = new Random().Next(5, 1000);
+            topic.Created = DateTime.UtcNow;
+            return true;
+        }
 
-    public bool AddReply(Reply reply)
-    {
-      reply.Id = new Random().Next(5, 1000);
-      reply.Created = DateTime.UtcNow;
-      return true;
+        public bool AddReply(Reply reply)
+        {
+            reply.Id = new Random().Next(5, 1000);
+            reply.Created = DateTime.UtcNow;
+            return true;
+        }
+
+        public IQueryable<Point> GetPoints()
+        {
+            return new Point[]
+            {
+                new Point
+                {
+                    Id = new Random().Next(5, 1000),
+                    Amount = 10,
+                    AwardedBy = 1,
+                    Challenge = "Do things.",
+                    Created = DateTime.UtcNow,
+                    Note = "This is a test"
+                }
+            }.AsQueryable();
+        }
+
+        public bool AddPoint(Point newPoint)
+        {
+            newPoint.Id = new Random().Next(5, 1000);
+            newPoint.Amount = 10;
+            newPoint.AwardedBy = 1;
+            newPoint.Challenge = "Do things.";
+            newPoint.Created = DateTime.UtcNow;
+            newPoint.Note = "This is a test";
+            return true;
+        }
     }
-  }
 }

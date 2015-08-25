@@ -70,5 +70,24 @@ namespace MessageBoard.Data
                 return false;
             }
         }
+
+        public IQueryable<Point> GetPoints()
+        {
+            return _context.Points;
+        }
+
+        public bool AddPoint(Point newPoint)
+        {
+            try
+            {
+                _context.Points.Add(newPoint);
+                return true;
+            }
+            catch (Exception e)
+            {
+                //TODO logging
+                return false;
+            }
+        }
     }
 }

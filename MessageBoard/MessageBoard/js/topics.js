@@ -1,4 +1,4 @@
-var thing = angular.module('home', ['ngRoute']);
+var thing = angular.module('messages', ['ngRoute']);
 
 thing.config(function ($routeProvider) {
     $routeProvider.when("/",

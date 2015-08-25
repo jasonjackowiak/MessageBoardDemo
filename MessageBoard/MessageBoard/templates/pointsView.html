@@ -1,0 +1,29 @@
+﻿<div>
+    <div class="message-header">
+        <h1>Chow's Points</h1>
+        <p class="lead">Something...</p>
+        
+        <div>
+            <a href="#/newpoints">Add New Pointse</a>
+        </div>
+
+        <div>Points Summary: {{ data.points.length }} things have happened</div>
+    </div>
+    <div class="progress progress-striped active" data-ng-show="isBusy">
+        <div class="bar" style="width: 100%;"></div>
+    </div>
+
+    <div class="points">
+        <div class="point row" data-ng-repeat="i in data.points">
+            <div class="title span10">
+                <a data-ng-href="#/points/{{i.id}}">{{ i.title }}</a>
+            </div>
+            <div class="date span2">
+                {{ i.created | date:"medium"}}
+            </div>
+            <div class="contents span12">
+                {{ i.body }}
+            </div>
+        </div>
+    </div>
+</div>
