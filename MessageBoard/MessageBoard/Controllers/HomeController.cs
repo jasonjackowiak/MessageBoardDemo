@@ -23,12 +23,13 @@ namespace MessageBoard.Controllers
         //[Authorize]
         public ActionResult Index()
         {
-            var points = _repo.GetPoints()
-            .OrderByDescending(t => t.Created)
-            .Take(25)
-            .ToList();
+            //var points = _repo.GetPoints()
+            //.OrderByDescending(t => t.Created)
+            //.Take(25)
+            //.ToList();
 
-            return View(points);
+            //return View(points);
+            return View();
         }
 
         public ActionResult About()

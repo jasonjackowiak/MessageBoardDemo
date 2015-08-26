@@ -205,6 +205,7 @@
     <Compile Include="Migrations\201507131123279_initial.Designer.cs">
       <DependentUpon>201507131123279_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
