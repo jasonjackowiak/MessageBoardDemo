@@ -3,16 +3,27 @@
 <form name="newPointsForm" novalidate="" data-ng-submit="save()">
     <fieldset>
         <div>
-            <label for="title">Title</label>
-            <input name="title" type="text" data-ng-model="newPoints.title" required="" data-ng-minlength="5" />
-            <span class="error" data-ng-show="newTopicForm.title.$error.required">*</span>
-            <span class="error" data-ng-show="newTopicForm.title.$error.minlength">Minimum 5 Characters</span>
+            <label for="amount">Amount</label>
+            <input name="amount" type="text" data-ng-model="newPoints.amount" />
+            <!--need to add in numberical validation-->
+            <!--<span class="error" data-ng-show="newTopicForm.amount.$error.required">*</span>
+            <span class="error" data-ng-show="newTopicForm.amount.$error.">Minimum 5 Characters</span>-->
         </div>
         <div>
-            <label for="body">Body</label>
-            <textarea name="body" rows="5" cols="30" required="" data-ng-model="newPoints.body" data-ng-minlength="15"/>
-            <span class="error" data-ng-show="newTopicForm.body.$error.required">*</span>
-            <span class="error" data-ng-show="newTopicForm.body.$error.minlength">Minimum 15 Characters</span>
+            <label for="awardedby">Awarded By</label>
+            <input name="awardedby" type="text" data-ng-model="newPoints.awardedby" required="" data-ng-minlength="3" />
+            <span class="error" data-ng-show="newPointsForm.awardedby.$error.required">*</span>
+            <span class="error" data-ng-show="newPointsForm.awardedby.$error.minlength">Minimum 3 Characters</span>
+        </div>
+        <div>
+            <label for="challenge">Challenge Completed</label>
+            <textarea name="challenge" rows="5" cols="30" required="" data-ng-model="newPoints.challenge" data-ng-minlength="15" />
+            <span class="error" data-ng-show="newPointsForm.challenge.$error.required">*</span>
+            <span class="error" data-ng-show="newPointsForm.challenge.$error.minlength">Minimum 10 Characters</span>
+        </div>
+        <div>
+            <label for="note">Additional Notes</label>
+            <textarea name="note" rows="5" cols="30" data-ng-model="newPoints.challenge" />
         </div>
         <div>
             <input type="submit" class="btn" value="Save" data-ng-disabled="newPointsForm.$invalid" />
@@ -20,3 +31,10 @@
         </div>
     </fieldset>
 </form>
+
+        public int Id { get; set; }
+        public int Amount { get; set; }
+        public int AwardedBy { get; set; } //This might change to string with name
+        public string Challenge { get; set; }
+        public DateTime Created { get; set; }
+        public string Note { get; set; }

@@ -201,11 +201,6 @@
     <Compile Include="Data\MessageBoardsMigrationConfiguration.cs" />
     <Compile Include="Data\Point.cs" />
     <Compile Include="Data\Reply.cs" />
-    <Compile Include="Migrations\201507131123279_initial.cs" />
-    <Compile Include="Migrations\201507131123279_initial.Designer.cs">
-      <DependentUpon>201507131123279_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -1230,6 +1225,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1237,11 +1233,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507131123279_initial.resx">
-      <DependentUpon>201507131123279_initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -17,7 +17,7 @@ namespace MessageBoard.Controllers
             _repo = repo;
         }
 
-        public IEnumerable<Point> Get(bool includeReplies = false)
+        public IEnumerable<Point> Get()
         {
             IQueryable<Point> results;
             results = _repo.GetPoints();

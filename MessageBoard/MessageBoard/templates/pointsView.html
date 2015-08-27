@@ -16,13 +16,13 @@
     <div class="points">
         <div class="point row" data-ng-repeat="i in data.points">
             <div class="title span10">
-                <a data-ng-href="#/points/{{i.id}}">{{ i.title }}</a>
+                <a data-ng-href="#/points/{{i.id}}">{{ i.awarded }}</a>
             </div>
             <div class="date span2">
                 {{ i.created | date:"medium"}}
             </div>
             <div class="contents span12">
-                {{ i.body }}
+                {{ i.challenge }}
             </div>
         </div>
     </div>

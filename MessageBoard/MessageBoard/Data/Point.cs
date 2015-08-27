@@ -13,7 +13,5 @@ namespace MessageBoard.Data
         public string Challenge { get; set; }
         public DateTime Created { get; set; }
         public string Note { get; set; }
-
-        public ICollection<Reply> Replies { get; set; }
     }
 }

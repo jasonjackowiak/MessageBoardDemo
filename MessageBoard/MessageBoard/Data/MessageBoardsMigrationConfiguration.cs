@@ -9,8 +9,8 @@ namespace MessageBoard.Data
     {
         public MessageBoardsMigrationConfiguration()
         {
-            this.AutomaticMigrationDataLossAllowed = false;
-            this.AutomaticMigrationsEnabled = false;
+            this.AutomaticMigrationDataLossAllowed = true;
+            this.AutomaticMigrationsEnabled = true;
         }
 
 //        protected override void Seed(MessageBoardContext context)
@@ -35,27 +35,6 @@ namespace MessageBoard.Data
 //                        new Reply()
 //                        {
 //                            Body = "Aww shucks :)",
-//                            Created = DateTime.Now
-//                        }
-//                    }
-//                };
-//                context.Topics.Add(topic);
-
-//                var anotherTopic = new Topic()
-//                {
-//                    Title = "I love other things!",
-//                    Created = DateTime.Now,
-//                    Body = "Because there's more to life than this.",
-//                    Replies = new List<Reply>()
-//                    {
-//                        new Reply()
-//                        {
-//                            Body = "Me too.",
-//                            Created = DateTime.Now
-//                        },
-//                        new Reply()
-//                        {
-//                            Body = "Not me.",
 //                            Created = DateTime.Now
 //                        }
 //                    }

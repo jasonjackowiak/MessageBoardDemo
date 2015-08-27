@@ -10,7 +10,7 @@ thing.config(function ($routeProvider) {
     $routeProvider.when("/newpoints",
     {
         templateUrl: "/templates/newPointsView.html",
-        controller: "newTopicController",
+        controller: "newPointsController",
     });
     $routeProvider.otherwise({ redirectTo: "/" });
     });
@@ -96,11 +96,11 @@ function pointsController($scope, $http, dataService) {
     }
 };
 
-function newTopicController($scope, $http, $window, dataService) {
-    $scope.newTopic = {};
+function newPointsController($scope, $http, $window, dataService) {
+    $scope.newPoints = {};
 
     $scope.save = function() {
-        dataService.addTopic($scope.newTopic)
+        dataService.addTopic($scope.newPoints)
             .then(function() {
                     //success
                     $window.location = "#/";
@@ -113,5 +113,5 @@ function newTopicController($scope, $http, $window, dataService) {
 };
 
 //bind the controller to the function
-thing.controller('topicsController', topicsController);
-thing.controller('newTopicController', newTopicController);
+thing.controller('pointsController', pointsController);
+thing.controller('newPointsController', newPointsController);
