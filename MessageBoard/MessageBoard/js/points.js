@@ -41,7 +41,7 @@ thing.factory("dataService", function ($http, $q) {
 
     var _addPoints = function (newPoints) {
         var deferred = $q.defer();
-        $http.post("/api/v1/topics", newPoints)
+        $http.post("/api/v1/points", newPoints)
             .then(function (result) {
                 //success
                 var newlyCreatedPoints = result.data;
@@ -53,19 +53,6 @@ thing.factory("dataService", function ($http, $q) {
                 deferred.reject();
             });
         return deferred.promise;
-    };
-
-    function _findPoints(id) {
-        var found = null;
-
-        //this is a jquery iteration function
-        $.each(_points, function(i, item) {
-            if (item.id == id) {
-                found = item;
-                return false;
-            }
-        });
-        return found;
     };
 
     return {
@@ -100,10 +87,10 @@ function newPointsController($scope, $http, $window, dataService) {
     $scope.newPoints = {};
 
     $scope.save = function() {
-        dataService.addTopic($scope.newPoints)
+        dataService.addPoints($scope.newPoints)
             .then(function() {
                     //success
-                    $window.location = "#/";
+                    $window.location = "/";
                 },
                 function() {
                     //error
