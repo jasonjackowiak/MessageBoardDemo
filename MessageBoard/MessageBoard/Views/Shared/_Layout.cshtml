@@ -88,11 +88,12 @@
                                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                                         <li>@Html.ActionLink("About", "About", "Home")</li>
                                         @*<li>@Html.ActionLink("Leave a message", "MyMessages", "Home")</li>*@
-                                        <li><a href="Home/MyMessages"><i class="icon-camera-retro"></i>Messages</a></li>
+                                        @*<li><a href="Home/MyMessages"><i class="icon-camera-retro"></i>Messages</a></li>*@
+                                        <li></li>
                                     </ul>
-                                   
+                                    
                                 </div>
-                                @Html.Partial("_LoginPartial")
+
                             </div>
                             <!-- Navigation Ends Here -->
                         </div>
@@ -100,7 +101,8 @@
                     <div class="share">
                         <div class="pull-right">
                             <!-- Share it link for slider -->
-                            <p><a href="#" class="open"><span class="hidden-phone">Share it</span> <i class="icon-share"></i></a></p>
+                            <p>@Html.Partial("_LoginPartial")</p>
+                            @*<p><a href="#" class="open"><span class="hidden-phone">Share it</span> <i class="icon-share"></i></a></p>*@
                         </div>
                     </div>
                 </div>

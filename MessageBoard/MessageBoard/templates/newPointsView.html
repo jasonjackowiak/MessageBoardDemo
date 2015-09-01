@@ -10,12 +10,6 @@
             <span class="error" data-ng-show="newTopicForm.amount.$error.">Minimum 5 Characters</span>-->
         </div>
         <div>
-            <label for="awardedby">Awarded By</label>
-            <input name="awardedby" type="text" data-ng-model="newPoints.awardedby" required="" data-ng-minlength="3" />
-            <span class="error" data-ng-show="newPointsForm.awardedby.$error.required">*</span>
-            <span class="error" data-ng-show="newPointsForm.awardedby.$error.minlength">Minimum 3 Characters</span>
-        </div>
-        <div>
             <label for="challenge">Challenge Completed</label>
             <textarea name="challenge" rows="5" cols="30" required="" data-ng-model="newPoints.challenge" data-ng-minlength="15" />
             <span class="error" data-ng-show="newPointsForm.challenge.$error.required">*</span>

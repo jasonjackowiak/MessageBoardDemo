@@ -18,6 +18,7 @@ thing.config(function ($routeProvider) {
 thing.factory("dataService", function ($http, $q) {
     var _points = [];
     var _isInit = false;
+    var _isAuthenticated = false;
 
     var _isReady = function () {
         return _isInit;
@@ -36,6 +37,21 @@ thing.factory("dataService", function ($http, $q) {
                 //fail
                 deferred.reject();
             });
+        return deferred.promise;
+    };
+
+    var _getUser = function() {
+        var deferred = $q.defer();
+        $http.get("api/v1/points")
+            .then(function(result) {
+                    //success
+                    _isAuthenticated = true;
+                    deferred.resolve();
+                },
+                function() {
+                    //fail
+                    deferred.reject();
+                });
         return deferred.promise;
     };
 
@@ -60,6 +76,7 @@ thing.factory("dataService", function ($http, $q) {
         getPoints: _getPoints,
         addPoints: _addPoints,
         isReady: _isReady,
+        isAuthenticated: _isAuthenticated
     };
 });
 

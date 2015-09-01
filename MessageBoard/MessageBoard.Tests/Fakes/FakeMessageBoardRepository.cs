@@ -145,7 +145,7 @@ namespace MessageBoard.Tests.Fakes
                 {
                     Id = new Random().Next(5, 1000),
                     Amount = 10,
-                    AwardedBy = 1,
+                    AwardedBy = "Brad",
                     Challenge = "Do things.",
                     Created = DateTime.UtcNow,
                     Note = "This is a test"
@@ -157,7 +157,7 @@ namespace MessageBoard.Tests.Fakes
         {
             newPoint.Id = new Random().Next(5, 1000);
             newPoint.Amount = 10;
-            newPoint.AwardedBy = 1;
+            newPoint.AwardedBy = "Brad";
             newPoint.Challenge = "Do things.";
             newPoint.Created = DateTime.UtcNow;
             newPoint.Note = "This is a test";

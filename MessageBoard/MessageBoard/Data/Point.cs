@@ -9,7 +9,7 @@ namespace MessageBoard.Data
     {
         public int Id { get; set; }
         public int Amount { get; set; }
-        public int AwardedBy { get; set; } //This might change to string with name
+        public string AwardedBy { get; set; } //This might change to string with name
         public string Challenge { get; set; }
         public DateTime Created { get; set; }
         public string Note { get; set; }

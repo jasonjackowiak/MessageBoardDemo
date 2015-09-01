@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using MessageBoard.Data;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace MessageBoard.Controllers
 {
+
+    [Authorize]
     public class PointsController : ApiController
     {
         private IMessageBoardRepository _repo;
@@ -29,12 +35,21 @@ namespace MessageBoard.Controllers
             return points;
         }
 
+        [Authorize]
         public HttpResponseMessage Post([FromBody]Point point)
         {
             if (point.Created == default(DateTime))
             {
                 point.Created = DateTime.Now;
             }
+
+            string name = HttpContext.Current.GetOwinContext()
+        .GetUserManager<ApplicationUserManager>()
+        .FindById(User.Identity.GetUserId()).FirstName + " " + HttpContext.Current.GetOwinContext()
+        .GetUserManager<ApplicationUserManager>()
+        .FindById(User.Identity.GetUserId()).Surname;
+
+            point.AwardedBy = name;
 
             if ((_repo.AddPoint(point)) &&
                 _repo.Save())
