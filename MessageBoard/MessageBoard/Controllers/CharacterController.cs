@@ -7,31 +7,29 @@ using System.Web;
 using System.Web.Http;
 using MessageBoard.Data;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 
 namespace MessageBoard.Controllers
 {
-
-    public class PointsController : ApiController
+    public class CharacterController : ApiController
     {
-        private IMessageBoardRepository _repo;
+                private IMessageBoardRepository _repo;
 
-        public PointsController(IMessageBoardRepository repo)
+        public CharacterController(IMessageBoardRepository repo)
         {
             _repo = repo;
         }
 
-        public IEnumerable<Point> Get()
+        public IEnumerable<Character> Get()
         {
-            IQueryable<Point> results;
-            results = _repo.GetPoints();
+            IQueryable<Character> results;
+            results = _repo.GetCharacters();
 
-            var points = results
-                .OrderByDescending(t => t.Created)
-                .Take(25)
+            var character = results
+                .OrderByDescending(t => t.Id)
+                .Take(5)
                 .ToList();
-            return points;
+            return character;
         }
 
         public HttpResponseMessage Post([FromBody]Point point)
@@ -60,4 +58,5 @@ namespace MessageBoard.Controllers
             }
         }
     }
-}
+    }
+

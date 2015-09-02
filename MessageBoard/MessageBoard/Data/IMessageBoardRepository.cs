@@ -19,5 +19,10 @@ namespace MessageBoard.Data
         //points
         IQueryable<Point> GetPoints();
         bool AddPoint(Point newPoint);
+
+        //characters
+        IQueryable<Character> GetCharacters();
+        IQueryable<CharacterClass> GetCharacterClasses();
+        bool AddCharacter(Character newCharacter);
     }
 }
