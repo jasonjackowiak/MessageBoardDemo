@@ -41,11 +41,14 @@ namespace MessageBoard.Controllers
                 point.Created = DateTime.Now;
             }
 
-            string name = HttpContext.Current.GetOwinContext()
-        .GetUserManager<ApplicationUserManager>()
-        .FindById(User.Identity.GetUserId()).FirstName + " " + HttpContext.Current.GetOwinContext()
-        .GetUserManager<ApplicationUserManager>()
-        .FindById(User.Identity.GetUserId()).Surname;
+            string name = "unknown";
+            
+            if (User.Identity.IsAuthenticated)
+                name = HttpContext.Current.GetOwinContext()
+                .GetUserManager<ApplicationUserManager>()
+                .FindById(User.Identity.GetUserId()).FirstName + " " + HttpContext.Current.GetOwinContext()
+                .GetUserManager<ApplicationUserManager>()
+                .FindById(User.Identity.GetUserId()).Surname;
 
             point.AwardedBy = name;
 

@@ -163,5 +163,21 @@ namespace MessageBoard.Tests.Fakes
             newPoint.Note = "This is a test";
             return true;
         }
+
+
+        public IQueryable<Character> GetCharacters()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<CharacterClass> GetCharacterClasses()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool AddCharacter(Character newCharacter)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
