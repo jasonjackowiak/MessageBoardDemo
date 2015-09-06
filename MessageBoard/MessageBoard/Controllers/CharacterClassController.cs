@@ -19,11 +19,11 @@ namespace MessageBoard.Controllers
             IQueryable<CharacterClass> results;
             results = _repo.GetCharacterClasses();
 
-            var character = results
+            var characterClasses = results
                 .OrderByDescending(t => t.Id)
                 .Take(5)
                 .ToList();
-            return character;
+            return characterClasses;
         }
 
     }

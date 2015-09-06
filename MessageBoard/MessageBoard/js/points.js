@@ -12,16 +12,20 @@ thing.config(function ($routeProvider) {
         templateUrl: "/templates/newPointsView.html",
         controller: "newPointsController",
     });
-    $routeProvider.when("/character",
+    $routeProvider.when("/characters",
 {
     templateUrl: "/templates/charactersView.html",
     controller: "characterController",
-    controllerAs: "app"
+});
+    $routeProvider.when("/selectcharacter",
+{
+    templateUrl: "/templates/selectCharacterView.html",
+    controller: "characterClassController",
 });
     $routeProvider.when("/newcharacter",
     {
         templateUrl: "/templates/newCharacterView.html",
-        controller: "newCharacterontroller",
+        controller: "newCharacterController",
     });
     $routeProvider.otherwise({ redirectTo: "/" });
     });
@@ -29,6 +33,7 @@ thing.config(function ($routeProvider) {
 thing.factory("dataService", function ($http, $q) {
     var _points = [];
     var _characters = [];
+    var _characterclass = [];
     var _isInit = false;
     //var _isAuthenticated = false;
 
@@ -99,6 +104,22 @@ thing.factory("dataService", function ($http, $q) {
         return deferred.promise;
     };
 
+    var _getCharacterClass = function () {
+        var deferred = $q.defer();
+        $http.get("api/v1/characterclass")
+            .then(function (result) {
+                //success
+                angular.copy(result.data, _characterclass);
+                _isInit = true;
+                deferred.resolve();
+            },
+            function () {
+                //fail
+                deferred.reject();
+            });
+        return deferred.promise;
+    };
+
     var _addCharacter = function (newCharacter) {
         var deferred = $q.defer();
         $http.post("/api/v1/character", newCharacter)
@@ -119,8 +140,10 @@ thing.factory("dataService", function ($http, $q) {
         points: _points,
         getPoints: _getPoints,
         addPoints: _addPoints,
-        characters: _characters,
         getCharacters: _getCharacters,
+        characters: _characters,
+        characterclasses: _characterclass,
+        getCharacterClass: _getCharacterClass,
         addCharacter: _addCharacter,
         isReady: _isReady,
         //isAuthenticated: _isAuthenticated
@@ -183,6 +206,26 @@ function characterController($scope, $http, dataService) {
     }
 };
 
+function characterClassController($scope, $http, dataService) {
+    $scope.data = dataService;
+    $scope.isBusy = false;
+
+    if (dataService.isReady() == false) {
+        $scope.isBusy = true;
+        dataService.getCharacterClass()
+            .then(function () {
+                //success
+            },
+            function () {
+                //fail
+                alert("could not load characters classes, sad face.");
+            })
+            .then(function () {
+                $scope.isBusy = false;
+            });
+    }
+};
+
 function newCharacterController($scope, $http, $window, dataService) {
     $scope.newCharacter = {};
 
@@ -205,5 +248,7 @@ thing.controller('newPointsController', newPointsController);
 
 thing.controller('characterController', characterController);
 thing.controller('newCharacterController', newCharacterController);
+thing.controller('characterClassController', characterClassController);
+
 
 //var thing = angular.module('character', ['ngRoute']);

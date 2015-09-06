@@ -1,0 +1,19 @@
+﻿<div>
+    <div class="message-header">
+        <h1>Chow, select your character class!</h1>
+        <div class="lead">Choose from one of the {{ data.characterclasses.length }} awesome classes.</div>
+    </div>
+    <div class="progress progress-striped active" data-ng-show="isBusy">
+        <div class="bar" style="width: 100%;"></div>
+    </div>
+    <div class="title span10">
+        <h4>Pick one</h4>
+    </div>
+    <div class="selectcharacter">
+        <div class="selectcharacter row" data-ng-repeat="i in data.characterclasses">
+            <div class="contents span10">
+                {{i.name}}: {{i.description}}
+            </div>
+        </div>
+    </div>
+</div>
