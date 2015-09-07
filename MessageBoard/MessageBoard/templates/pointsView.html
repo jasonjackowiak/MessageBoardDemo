@@ -7,6 +7,12 @@
         <div>
             <a href="#/newpoints">Add New Points</a>
         </div>
+        
+        <div ng-controller="characterController">
+            <h4>Existing Character is</h4>
+            <div>{{ data.character.length }} exist.</div>
+        </div>
+
         <div class="lead">Points Summary: {{ data.points.length }} things have happened</div>
     </div>
     <div class="progress progress-striped active" data-ng-show="isBusy">

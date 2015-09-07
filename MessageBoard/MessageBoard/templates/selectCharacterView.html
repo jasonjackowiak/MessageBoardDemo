@@ -1,19 +1,32 @@
-﻿<div>
-    <div class="message-header">
-        <h1>Chow, select your character class!</h1>
-        <div class="lead">Choose from one of the {{ data.characterclasses.length }} awesome classes.</div>
-    </div>
-    <div class="progress progress-striped active" data-ng-show="isBusy">
-        <div class="bar" style="width: 100%;"></div>
-    </div>
-    <div class="title span10">
-        <h4>Pick one</h4>
-    </div>
-    <div class="selectcharacter">
-        <div class="selectcharacter row" data-ng-repeat="i in data.characterclasses">
-            <div class="contents span10">
-                {{i.name}}: {{i.description}}
-            </div>
+﻿<div class="message-header">
+    <h1>Chow, select your character class!</h1>
+    <div class="lead">Choose from one of the {{ data.characterclasses.length }} awesome classes.</div>
+</div>
+<div class="progress progress-striped active" data-ng-show="isBusy">
+    <div class="bar" style="width: 100%;"></div>
+</div>
+<div class="title span10">
+    <h4>Pick one</h4>
+</div>
+<div class="selectcharacter">
+    <div class="selectcharacter row" data-ng-repeat="i in data.characterclasses">
+        <div class="contents span10">
+            {{i.name}}: {{i.description}}
         </div>
     </div>
 </div>
+
+<form name="newCharacterForm" ng-controller="newCharacterController" novalidate="" data-ng-submit="save()">
+    <fieldset>
+        <div>
+            <label for="name">Name your character</label>
+            <textarea name="name" rows="5" cols="30" required="" data-ng-model="newCharacter.name" data-ng-minlength="3" />
+            <span class="error" data-ng-show="newCharacterForm.name.$error.required">*</span>
+            <span class="error" data-ng-show="newCharacterForm.name.$error.minlength">Minimum 3 Characters</span>
+        </div>
+        <div>
+            <input type="submit" class="btn" value="Save" data-ng-disabled="newCharacterForm.$invalid" />
+            <a href="/" class="btn">Cancel</a>
+        </div>
+    </fieldset>
+</form>

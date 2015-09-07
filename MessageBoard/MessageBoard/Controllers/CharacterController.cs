@@ -33,25 +33,28 @@ namespace MessageBoard.Controllers
             return character;
         }
 
-        public HttpResponseMessage Post([FromBody]Point point)
+        public HttpResponseMessage Post([FromBody]Character character)
         {
-            if (point.Created == default(DateTime))
+            if (character.Created == default(DateTime))
             {
-                point.Created = DateTime.Now;
+                character.Created = DateTime.Now;
             }
 
-            string name = HttpContext.Current.GetOwinContext()
-        .GetUserManager<ApplicationUserManager>()
-        .FindById(User.Identity.GetUserId()).FirstName + " " + HttpContext.Current.GetOwinContext()
-        .GetUserManager<ApplicationUserManager>()
-        .FindById(User.Identity.GetUserId()).Surname;
+            string userId = "";
 
-            point.AwardedBy = name;
+            if (User.Identity.IsAuthenticated)
+            {
+                userId = HttpContext.Current.GetOwinContext()
+                    .GetUserManager<ApplicationUserManager>()
+                    .FindById(User.Identity.GetUserId()).Id;
 
-            if ((_repo.AddPoint(point)) &&
+                character.UserId = Convert.ToInt32(userId);
+            }
+
+            if ((_repo.AddCharacter(character)) &&
                 _repo.Save())
             {
-                return Request.CreateResponse(HttpStatusCode.Created, point);
+                return Request.CreateResponse(HttpStatusCode.Created, character);
             }
             else
             {

@@ -21,6 +21,7 @@ thing.config(function ($routeProvider) {
 {
     templateUrl: "/templates/selectCharacterView.html",
     controller: "characterClassController",
+    //controller: "characterController",
 });
     $routeProvider.when("/newcharacter",
     {
@@ -230,7 +231,7 @@ function newCharacterController($scope, $http, $window, dataService) {
     $scope.newCharacter = {};
 
     $scope.save = function () {
-        dataService.addCharacter($scope.newPoints)
+        dataService.addCharacter($scope.newCharacter)
             .then(function () {
                 //success
                 $window.location = "/";

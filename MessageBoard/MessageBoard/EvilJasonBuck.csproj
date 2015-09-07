@@ -1184,8 +1184,9 @@
     <Content Include="templates\newPointsView.html" />
     <Content Include="templates\newTopicView.html" />
     <Content Include="templates\charactersView.html" />
-    <Content Include="templates\singleTopicView.html" />
     <Content Include="templates\pointsView.html" />
+    <Content Include="templates\singleTopicView.html" />
+    <Content Include="templates\selectCharacterView.html" />
     <Content Include="templates\topicsView.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
