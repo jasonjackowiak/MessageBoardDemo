@@ -24,7 +24,7 @@ namespace MessageBoard.Controllers
         public IEnumerable<Character> Get()
         {
             IQueryable<Character> results;
-            results = _repo.GetCharacters();
+            results = _repo.GetCharactersWithPoints();
 
             var character = results
                 .OrderByDescending(t => t.Id)
@@ -40,15 +40,11 @@ namespace MessageBoard.Controllers
                 character.Created = DateTime.Now;
             }
 
-            string userId = "";
-
             if (User.Identity.IsAuthenticated)
             {
-                userId = HttpContext.Current.GetOwinContext()
+                character.UserId = HttpContext.Current.GetOwinContext()
                     .GetUserManager<ApplicationUserManager>()
                     .FindById(User.Identity.GetUserId()).Id;
-
-                character.UserId = Convert.ToInt32(userId);
             }
 
             if ((_repo.AddCharacter(character)) &&

@@ -179,5 +179,10 @@ namespace MessageBoard.Tests.Fakes
         {
             throw new NotImplementedException();
         }
+
+        public IQueryable<Character> GetCharactersWithPoints()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

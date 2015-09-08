@@ -1,26 +1,26 @@
-﻿<div class="message-header">
-    <h1>Chow, select your character class!</h1>
-    <div class="lead">Choose from one of the {{ data.characterclasses.length }} awesome classes.</div>
-</div>
-<div class="progress progress-striped active" data-ng-show="isBusy">
-    <div class="bar" style="width: 100%;"></div>
-</div>
-<div class="title span10">
-    <h4>Pick one</h4>
-</div>
-<div class="selectcharacter">
-    <div class="selectcharacter row" data-ng-repeat="i in data.characterclasses">
-        <div class="contents span10">
-            {{i.name}}: {{i.description}}
-        </div>
-    </div>
-</div>
-
-<form name="newCharacterForm" ng-controller="newCharacterController" novalidate="" data-ng-submit="save()">
+﻿<form name="newCharacterForm" novalidate="" data-ng-submit="save()">
     <fieldset>
+        <div class="message-header">
+            <h1>Chow, select your character class!</h1>
+            <div class="lead">Choose from one of the {{ data.characterclasses.length }} awesome classes.</div>
+        </div>
+        <div class="progress progress-striped active" data-ng-show="isBusy">
+            <div class="bar" style="width: 100%;"></div>
+        </div>
+        <div ng-controller="characterClassController">
+            <div class="selectcharacter row" data-ng-repeat="i in data.characterclasses">
+                <div class="contents span10">
+                    <label>
+                        {{i.name}} <input type="checkbox" ng-model="newCharacter.classid" ng-true-value="{{i.id}}">
+                    </label>
+                </div>
+                <div class="contents span10">{{i.description}}</div><br/>
+            </div>
+        </div>
+        <br/>
         <div>
-            <label for="name">Name your character</label>
-            <textarea name="name" rows="5" cols="30" required="" data-ng-model="newCharacter.name" data-ng-minlength="3" />
+            <label for="name">Name</label>
+            <textarea name="name" rows="1" cols="20" required="" data-ng-model="newCharacter.name" data-ng-minlength="3" />
             <span class="error" data-ng-show="newCharacterForm.name.$error.required">*</span>
             <span class="error" data-ng-show="newCharacterForm.name.$error.minlength">Minimum 3 Characters</span>
         </div>

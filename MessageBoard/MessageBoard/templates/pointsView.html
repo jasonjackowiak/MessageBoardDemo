@@ -8,9 +8,8 @@
             <a href="#/newpoints">Add New Points</a>
         </div>
         
-        <div ng-controller="characterController">
-            <h4>Existing Character is</h4>
-            <div>{{ data.character.length }} exist.</div>
+        <div ng-controller="characterController" data-ng-repeat="i in data.characters">
+            <h4>Welcome {{ i.name }}!</h4>
         </div>
 
         <div class="lead">Points Summary: {{ data.points.length }} things have happened</div>
@@ -24,7 +23,7 @@
     <div class="points">
         <div class="point row" data-ng-repeat="i in data.points">
             <div class="contents span10">
-                Jason earnt {{i.amount}} points for {{i.challenge}} (awarded by {{ i.awardedBy }}).
+                {{i.classid}} earnt {{i.amount}} points for {{i.challenge}} (awarded by {{ i.awardedBy }}).
             </div>
             <div class="date span2">
                 {{ i.created | date:"medium"}}

@@ -113,5 +113,10 @@ namespace MessageBoard.Data
                 return false;
             }
         }
+
+        public IQueryable<Character> GetCharactersWithPoints()
+        {
+            return _context.Characters.Include("Points");
+        }
     }
 }

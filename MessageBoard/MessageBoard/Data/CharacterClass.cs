@@ -12,7 +12,6 @@ namespace MessageBoard.Data
         public string Description { get; set; }
 
         public ICollection<CharacterAttribute> Attributes { get; set; }
-        public ICollection<Character> Characters { get; set; }
     }
 }
 

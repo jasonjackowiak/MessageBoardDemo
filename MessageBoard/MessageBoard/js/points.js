@@ -20,7 +20,7 @@ thing.config(function ($routeProvider) {
     $routeProvider.when("/selectcharacter",
 {
     templateUrl: "/templates/selectCharacterView.html",
-    controller: "characterClassController",
+    controller: "newCharacterController",
     //controller: "characterController",
 });
     $routeProvider.when("/newcharacter",
