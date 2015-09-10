@@ -25,5 +25,6 @@ namespace MessageBoard.Data
         IQueryable<Character> GetCharactersWithPoints();
         IQueryable<CharacterClass> GetCharacterClasses();
         bool AddCharacter(Character newCharacter);
+        Character GetFirstCharacter();
     }
 }

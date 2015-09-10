@@ -184,5 +184,11 @@ namespace MessageBoard.Tests.Fakes
         {
             throw new NotImplementedException();
         }
+
+
+        public Character GetFirstCharacter()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

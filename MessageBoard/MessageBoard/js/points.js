@@ -28,6 +28,11 @@ thing.config(function ($routeProvider) {
         templateUrl: "/templates/newCharacterView.html",
         controller: "newCharacterController",
     });
+    $routeProvider.when("/singlecharacter",
+{
+    templateUrl: "/templates/singleCharacterView.html",
+    controller: "singleCharacterController",
+});
     $routeProvider.otherwise({ redirectTo: "/" });
     });
 
@@ -137,11 +142,54 @@ thing.factory("dataService", function ($http, $q) {
         return deferred.promise;
     };
 
+    function _findCharacter(id) {
+        var found = null;
+
+        //this is a jquery iteration function
+        $.each(_characters, function (i, item) {
+            if (item.id == id) {
+                found = item;
+                return false;
+            }
+        });
+        return found;
+    };
+
+    var _getCharacterById = function (id) {
+        var deferred = $q.defer();
+
+        if (_isReady()) {
+            var character = _findCharacter(id);
+            if (character) {
+                deferred.resolve(character);
+            } else {
+                deferred.reject();
+            }
+        } else {
+            _getCharacters()
+                .then(function () {
+                    //success
+                    var character = _findCharacter(id);
+                    if (character) {
+                        deferred.resolve(character);
+                    } else {
+                        deferred.reject();
+                    }
+                },
+                    function () {
+                        deferred.reject();
+                    });
+        }
+
+        return deferred.promise;
+    };
+
     return {
         points: _points,
         getPoints: _getPoints,
         addPoints: _addPoints,
         getCharacters: _getCharacters,
+        getCharacterById: _getCharacterById,
         characters: _characters,
         characterclasses: _characterclass,
         getCharacterClass: _getCharacterClass,
@@ -243,6 +291,33 @@ function newCharacterController($scope, $http, $window, dataService) {
     };
 };
 
+function singleCharacterController($scope, dataService, $window) {
+    $scope.character = null;
+    $scope.newReply = {};
+
+    dataService.getCharacterById(1)
+        .then(function (character) {
+            //success
+            $scope.character = character;
+        },
+            function () {
+                //error
+                $window.location = "#/";
+            });
+
+    //$scope.addReply = function () {
+    //    dataService.saveReply($scope.topic, $scope.newReply)
+    //        .then(function () {
+    //            //success
+    //            $scope.newReply.body = "";
+    //        },
+    //            function () {
+    //                //error
+    //                alert("Could not save the new reply");
+    //            });
+    //};
+};
+
 //bind the controller to the function
 thing.controller('pointsController', pointsController);
 thing.controller('newPointsController', newPointsController);
@@ -250,6 +325,8 @@ thing.controller('newPointsController', newPointsController);
 thing.controller('characterController', characterController);
 thing.controller('newCharacterController', newCharacterController);
 thing.controller('characterClassController', characterClassController);
+
+thing.controller('singleCharacterController', singleCharacterController);
 
 
 //var thing = angular.module('character', ['ngRoute']);

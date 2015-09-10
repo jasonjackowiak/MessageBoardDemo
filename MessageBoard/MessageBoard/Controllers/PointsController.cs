@@ -42,15 +42,18 @@ namespace MessageBoard.Controllers
             }
 
             string name = "unknown";
-            
             if (User.Identity.IsAuthenticated)
                 name = HttpContext.Current.GetOwinContext()
                 .GetUserManager<ApplicationUserManager>()
                 .FindById(User.Identity.GetUserId()).FirstName + " " + HttpContext.Current.GetOwinContext()
                 .GetUserManager<ApplicationUserManager>()
                 .FindById(User.Identity.GetUserId()).Surname;
-
             point.AwardedBy = name;
+
+            //Get character to assign to
+            var character = _repo.GetFirstCharacter();
+            point.CharacterId = character.Id;
+            //character.Points.Add(point);
 
             if ((_repo.AddPoint(point)) &&
                 _repo.Save())

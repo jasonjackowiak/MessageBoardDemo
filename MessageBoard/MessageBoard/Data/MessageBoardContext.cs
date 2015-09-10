@@ -14,8 +14,8 @@ namespace MessageBoard.Data
             this.Configuration.LazyLoadingEnabled = false;
             this.Configuration.ProxyCreationEnabled = false;
 
-            Database.SetInitializer(new CreateDatabaseIfNotExists<MessageBoardContext>());
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<MessageBoardContext, MessageBoardsMigrationConfiguration>());
+            //Database.SetInitializer(new CreateDatabaseIfNotExists<MessageBoardContext>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MessageBoardContext, MessageBoardsMigrationConfiguration>());
         }
 
         public DbSet<Topic> Topics { get; set; }

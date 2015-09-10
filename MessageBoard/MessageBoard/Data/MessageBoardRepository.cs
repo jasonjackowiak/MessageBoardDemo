@@ -118,5 +118,10 @@ namespace MessageBoard.Data
         {
             return _context.Characters.Include("Points");
         }
+
+        public Character GetFirstCharacter()
+        {
+            return _context.Characters.FirstOrDefault();
+        }
     }
 }

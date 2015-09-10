@@ -1,0 +1,13 @@
+﻿SET IDENTITY_INSERT [dbo].[CharacterClasses] ON 
+
+GO
+INSERT [dbo].[CharacterClasses] ([Id], [Name], [Description]) VALUES (1, N'Asian', N'Ohh Herro! You American have a such a big penis!!')
+GO
+INSERT [dbo].[CharacterClasses] ([Id], [Name], [Description]) VALUES (2, N'Chef', N'NOMNOM')
+GO
+INSERT [dbo].[CharacterClasses] ([Id], [Name], [Description]) VALUES (3, N'Athlete', N'Do you even lift?')
+GO
+INSERT [dbo].[CharacterClasses] ([Id], [Name], [Description]) VALUES (4, N'DJ', N'Chow')
+GO
+SET IDENTITY_INSERT [dbo].[CharacterClasses] OFF
+GO

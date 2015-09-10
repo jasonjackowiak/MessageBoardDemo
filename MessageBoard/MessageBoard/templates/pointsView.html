@@ -9,7 +9,14 @@
         </div>
         
         <div ng-controller="characterController" data-ng-repeat="i in data.characters">
-            <h4>Welcome {{ i.name }}!</h4>
+            <div class="lead">Character Summary</div>
+            <div>
+                <div><h4>Name: </h4> {{ i.name }}</div>
+                <h4>Skills: </h4>
+                <div data-ng-repeat="j in i.characterattributes">
+                    {{ i.description }}
+                </div>
+                <div></div>
         </div>
 
         <div class="lead">Points Summary: {{ data.points.length }} things have happened</div>
@@ -20,8 +27,8 @@
     <div class="title span10">
         <h3>Activity History</h3>
     </div>
-    <div class="points">
-        <div class="point row" data-ng-repeat="i in data.points">
+    <div class="replies">
+        <div class="reply row" data-ng-repeat="i in data.points">
             <div class="contents span10">
                 {{i.classid}} earnt {{i.amount}} points for {{i.challenge}} (awarded by {{ i.awardedBy }}).
             </div>

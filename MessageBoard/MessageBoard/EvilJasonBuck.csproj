@@ -337,6 +337,8 @@
     <Content Include="js\characters.js" />
     <Content Include="js\points.js" />
     <Content Include="js\topics.js" />
+    <Content Include="ReferenceData\CharacterAttribute.txt" />
+    <Content Include="ReferenceData\CharacterClass.txt" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -1185,6 +1187,7 @@
     <Content Include="templates\newTopicView.html" />
     <Content Include="templates\charactersView.html" />
     <Content Include="templates\pointsView.html" />
+    <Content Include="templates\singleCharacterView.html" />
     <Content Include="templates\singleTopicView.html" />
     <Content Include="templates\selectCharacterView.html" />
     <Content Include="templates\topicsView.html" />
