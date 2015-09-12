@@ -414,6 +414,8 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <None Include="Properties\PublishProfiles\JasonChowTheBuck - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\JasonChowTheBuck - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\messagestest - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\messagestest - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -1231,6 +1233,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\MyMessages.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Account\RegisterChow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
