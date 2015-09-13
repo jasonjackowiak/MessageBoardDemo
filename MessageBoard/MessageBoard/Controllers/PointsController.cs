@@ -34,6 +34,13 @@ namespace MessageBoard.Controllers
             return points;
         }
 
+        public int CalculateTotalPoints()
+        {
+            var points = Get();
+
+            return points.Aggregate(0, (current, p) => current + p.Amount);
+        }
+
         public HttpResponseMessage Post([FromBody]Point point)
         {
             if (point.Created == default(DateTime))
@@ -52,8 +59,7 @@ namespace MessageBoard.Controllers
 
             //Get character to assign to
             var character = _repo.GetFirstCharacter();
-            point.CharacterId = character.Id;
-            //character.Points.Add(point);
+            point.CharacterAwardedTo = character.Name;
 
             if ((_repo.AddPoint(point)) &&
                 _repo.Save())

@@ -217,6 +217,12 @@ function pointsController($scope, $http, dataService) {
                 $scope.isBusy = false;
             });
     }
+
+    $scope.data.totalpoints = 
+    angular.forEach($scope.data.points, function(value, key) {
+        console.log(key ':' + value);
+    });
+    
 };
 
 function newPointsController($scope, $http, $window, dataService) {

@@ -1,8 +1,8 @@
 ﻿<div class="message-header">
     <h1>Chow's Points</h1>
-    <div>
+    <!--<div>
         <a href="#/selectcharacter">Create your character</a>
-    </div>
+    </div>-->
     <div>
         <a href="#/newpoints">Add New Points</a>
     </div>
@@ -33,7 +33,7 @@
 <div class="replies">
     <div class="reply row" data-ng-repeat="i in data.points">
         <div class="contents span10">
-            {{i.classid}} earnt {{i.amount}} points for {{i.challenge}} (awarded by {{ i.awardedBy }}).
+            {{i.characterAwardedTo}} earnt {{i.amount}} points for {{i.challenge}} (awarded by {{ i.awardedBy }}).
         </div>
         <div class="date span2">
             {{ i.created | date:"medium"}}

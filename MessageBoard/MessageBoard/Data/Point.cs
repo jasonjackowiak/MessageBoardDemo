@@ -14,6 +14,6 @@ namespace MessageBoard.Data
         public DateTime Created { get; set; }
         public string Note { get; set; }
 
-        public int CharacterId { get; set; }
+        public string CharacterAwardedTo { get; set; }
     }
 }
