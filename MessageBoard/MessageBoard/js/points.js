@@ -34,10 +34,11 @@ thing.config(function ($routeProvider) {
     controller: "singleCharacterController",
 });
     $routeProvider.otherwise({ redirectTo: "/" });
-    });
+});
 
 thing.factory("dataService", function ($http, $q) {
     var _points = [];
+    var _totalPoints = [];
     var _characters = [];
     var _characterclass = [];
     var _isInit = false;
@@ -63,15 +64,23 @@ thing.factory("dataService", function ($http, $q) {
         return deferred.promise;
     };
 
-    var _getUser = function() {
+    var _calculateTotalPoints = function () {
+        var deferred = $q.defer();
+        calculateTotalPoints()
+        .then(function (result) {
+            angular.copy(result.data, _totalPoints);
+        });
+    };
+
+    var _getUser = function () {
         var deferred = $q.defer();
         $http.get("api/v1/points")
-            .then(function(result) {
-                    //success
-                    _isAuthenticated = true;
-                    deferred.resolve();
-                },
-                function() {
+            .then(function (result) {
+                //success
+                _isAuthenticated = true;
+                deferred.resolve();
+            },
+                function () {
                     //fail
                     deferred.reject();
                 });
@@ -186,6 +195,8 @@ thing.factory("dataService", function ($http, $q) {
 
     return {
         points: _points,
+        totalPoints: _totalPoints,
+        calculateTotalPoints: _calculateTotalPoints,
         getPoints: _getPoints,
         addPoints: _addPoints,
         getCharacters: _getCharacters,
@@ -216,25 +227,45 @@ function pointsController($scope, $http, dataService) {
             .then(function () {
                 $scope.isBusy = false;
             });
+
+        //$scope.isBusy = true;
+        //dataService.calculateTotalPoints()
+        //    .then(function () {
+        //        //success
+        //    },
+        //    function () {
+        //        //fail
+        //        alert("could not calculate total points, nuetral face");
+        //    })
+        //    .then(function () {
+        //        $scope.isBusy = false;
+        //    });
     }
 
-    $scope.data.totalpoints = 
-    angular.forEach($scope.data.points, function(value, key) {
-        console.log(key ':' + value);
-    });
-    
+    var pthing = calculateTotalPoints();
+
+    function calculateTotalPoints() {
+        var totalpoints = 0;
+        angular.forEach($scope.data.points, function (point) {
+            totalpoints += totalpoints + point.amount;
+        });
+        return totalpoints;
+    }
+
+
+    $scope.totalpoints = pthing;
 };
 
 function newPointsController($scope, $http, $window, dataService) {
     $scope.newPoints = {};
 
-    $scope.save = function() {
+    $scope.save = function () {
         dataService.addPoints($scope.newPoints)
-            .then(function() {
-                    //success
-                    $window.location = "/";
-                },
-                function() {
+            .then(function () {
+                //success
+                $window.location = "/";
+            },
+                function () {
                     //error
                     alert("could not save the new points, sad face.");
                 });
@@ -311,17 +342,6 @@ function singleCharacterController($scope, dataService, $window) {
                 $window.location = "#/";
             });
 
-    //$scope.addReply = function () {
-    //    dataService.saveReply($scope.topic, $scope.newReply)
-    //        .then(function () {
-    //            //success
-    //            $scope.newReply.body = "";
-    //        },
-    //            function () {
-    //                //error
-    //                alert("Could not save the new reply");
-    //            });
-    //};
 };
 
 //bind the controller to the function

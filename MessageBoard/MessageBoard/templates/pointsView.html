@@ -16,19 +16,19 @@
                 {{i.name}} (will show type in here)
             </label>
             <label>
-                Total Points = (Add function in)
+                Total Points = {{ totalpoints }}
             </label>
         </div>
     </div>
 </div>
 
-<div class="lead">Points Summary: {{ data.points.length }} things have happened</div>
+<div></div>
 
 <div class="progress progress-striped active" data-ng-show="isBusy">
     <div class="bar" style="width: 100%;"></div>
 </div>
 <div class="title span10">
-    <h3>Activity History</h3>
+    <h3>Activity History ({{ data.points.length }} events)</h3>
 </div>
 <div class="replies">
     <div class="reply row" data-ng-repeat="i in data.points">
