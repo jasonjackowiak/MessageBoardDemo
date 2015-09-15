@@ -1192,15 +1192,6 @@
     <Content Include="templates\singleTopicView.html" />
     <Content Include="templates\selectCharacterView.html" />
     <Content Include="templates\topicsView.html" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1234,6 +1225,13 @@
     <Content Include="Views\Home\MyMessages.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Account\RegisterChow.cshtml" />
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

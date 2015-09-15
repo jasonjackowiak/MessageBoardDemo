@@ -217,43 +217,17 @@ function pointsController($scope, $http, dataService) {
     if (dataService.isReady() == false) {
         $scope.isBusy = true;
         dataService.getPoints()
-            .then(function () {
-                //success
-            },
-            function () {
-                //fail
-                alert("could not load points, sad face.");
-            })
-            .then(function () {
+            .then(function() {
+                    //success
+                },
+                function() {
+                    //fail
+                    alert("could not load points, sad face.");
+                })
+            .then(function() {
                 $scope.isBusy = false;
             });
-
-        //$scope.isBusy = true;
-        //dataService.calculateTotalPoints()
-        //    .then(function () {
-        //        //success
-        //    },
-        //    function () {
-        //        //fail
-        //        alert("could not calculate total points, nuetral face");
-        //    })
-        //    .then(function () {
-        //        $scope.isBusy = false;
-        //    });
     }
-
-    var pthing = calculateTotalPoints();
-
-    function calculateTotalPoints() {
-        var totalpoints = 0;
-        angular.forEach($scope.data.points, function (point) {
-            totalpoints += totalpoints + point.amount;
-        });
-        return totalpoints;
-    }
-
-
-    $scope.totalpoints = pthing;
 };
 
 function newPointsController($scope, $http, $window, dataService) {
@@ -353,6 +327,4 @@ thing.controller('newCharacterController', newCharacterController);
 thing.controller('characterClassController', characterClassController);
 
 thing.controller('singleCharacterController', singleCharacterController);
-
-
 //var thing = angular.module('character', ['ngRoute']);

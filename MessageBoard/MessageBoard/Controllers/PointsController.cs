@@ -34,12 +34,19 @@ namespace MessageBoard.Controllers
             return points;
         }
 
-        public int CalculateTotalPoints()
-        {
-            var points = Get();
+        //public int CalculateTotalPoints()
+        //{
+        //    IQueryable<Point> results;
+        //    results = _repo.GetPoints();
 
-            return points.Aggregate(0, (current, p) => current + p.Amount);
-        }
+        //    var points = results
+        //        .OrderByDescending(t => t.Created)
+        //        //.Take(25)
+        //        .ToList();
+        //    //return points;
+
+        //    return points.Aggregate(0, (current, p) => current + p.Amount);
+        //}
 
         public HttpResponseMessage Post([FromBody]Point point)
         {
