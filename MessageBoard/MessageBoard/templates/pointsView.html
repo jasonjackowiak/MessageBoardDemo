@@ -1,39 +1,43 @@
 ﻿<div class="message-header">
     <h1>Chow's Points</h1>
-    <!--<div>
-        <a href="#/selectcharacter">Create your character</a>
-    </div>-->
+    <br/>
     <div>
         <a href="#/newpoints">Add New Points</a>
     </div>
 </div>
 
+<div><br/></div>
+
 <div ng-controller="characterController">
-    <div class="lead">Character Summary</div>
+    <div class="lead"><h3>Character Summary</h3></div>
     <div class="selectcharacter row" data-ng-repeat="i in data.characters">
         <div class="contents span10">
             <label>
-                {{i.name}} (will show type in here)
+                <b>Name:</b> {{i.name}}
             </label>
             <label>
-                Total Points = {{ totalpoints }}
+               <b>Class:</b> (will show type in here)
+            </label>
+            <label>
+                <b>Total Points:</b> 0 (will show actual points one day)
             </label>
         </div>
     </div>
 </div>
 
-<div></div>
+<div><br/><br/></div>
 
 <div class="progress progress-striped active" data-ng-show="isBusy">
     <div class="bar" style="width: 100%;"></div>
 </div>
-<div class="title span10">
-    <h3>Activity History ({{ data.points.length }} events)</h3>
+
+<div class="lead">
+<h3>Activity History ({{ data.points.length }} events)</h3>
 </div>
 <div class="replies">
     <div class="reply row" data-ng-repeat="i in data.points">
         <div class="contents span10">
-            {{i.characterAwardedTo}} earnt {{i.amount}} points for {{i.challenge}} (awarded by {{ i.awardedBy }}).
+            {{i.characterAwardedTo}} earnt {{i.amount}} points for "{{i.challenge}}" (awarded by {{ i.awardedBy }}).
         </div>
         <div class="date span2">
             {{ i.created | date:"medium"}}
