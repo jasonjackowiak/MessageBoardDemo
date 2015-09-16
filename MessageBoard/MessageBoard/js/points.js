@@ -42,6 +42,8 @@ thing.factory("dataService", function ($http, $q) {
     var _characters = [];
     var _characterclass = [];
     var _isInit = false;
+    var _chowsCharacterClassId = 0;
+    var _chowsCharacterClassObject = [];
     //var _isAuthenticated = false;
 
     var _isReady = function () {
@@ -109,6 +111,10 @@ thing.factory("dataService", function ($http, $q) {
             .then(function (result) {
                 //success
                 angular.copy(result.data, _characters);
+                //lil hacky to get the id for Chow's character
+                if (_characters.length > 0) {
+                  _chowsCharacterClassId = _characters[0].classId - 1;
+        }
                 _isInit = true;
                 deferred.resolve();
             },
@@ -125,6 +131,12 @@ thing.factory("dataService", function ($http, $q) {
             .then(function (result) {
                 //success
                 angular.copy(result.data, _characterclass);
+        
+        //testing
+        if (_characterclass.length > 0) {
+           angular.copy(_characterclass[_chowsCharacterClassId], _chowsCharacterClassObject);
+        }
+
                 _isInit = true;
                 deferred.resolve();
             },
@@ -206,6 +218,8 @@ thing.factory("dataService", function ($http, $q) {
         getCharacterClass: _getCharacterClass,
         addCharacter: _addCharacter,
         isReady: _isReady,
+        chowsCharacterClassId: _chowsCharacterClassId,
+        chowsCharacterClassObject: _chowsCharacterClassObject
         //isAuthenticated: _isAuthenticated
     };
 });
@@ -269,6 +283,7 @@ function characterController($scope, $http, dataService) {
 function characterClassController($scope, $http, dataService) {
     $scope.data = dataService;
     $scope.isBusy = false;
+        $scope.data.test = "";
 
     if (dataService.isReady() == false) {
         $scope.isBusy = true;

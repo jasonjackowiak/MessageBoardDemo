@@ -16,12 +16,23 @@
                 <b>Name:</b> {{i.name}}
             </label>
             <label>
-               <b>Class:</b> (will show type in here)
+                <b>Class:</b> (will show type in here)
             </label>
             <label>
                 <b>Total Points:</b> 0 (will show actual points one day)
             </label>
         </div>
+    </div>
+</div>
+
+<div ng-controller="characterClassController">
+    testing class data
+    {{data.chowsCharacterClassObject}}
+    {{data.chowsCharacterClassObject.name}}
+    {{data.chowsCharacterClassObject.description}}
+    
+    <div class="selectcharacter row" data-ng-repeat="i in data.chowsCharacterClassObject.attributes">
+        {{i.description}}
     </div>
 </div>
 
