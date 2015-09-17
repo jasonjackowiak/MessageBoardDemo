@@ -34,20 +34,6 @@ namespace MessageBoard.Controllers
             return points;
         }
 
-        //public int CalculateTotalPoints()
-        //{
-        //    IQueryable<Point> results;
-        //    results = _repo.GetPoints();
-
-        //    var points = results
-        //        .OrderByDescending(t => t.Created)
-        //        //.Take(25)
-        //        .ToList();
-        //    //return points;
-
-        //    return points.Aggregate(0, (current, p) => current + p.Amount);
-        //}
-
         public HttpResponseMessage Post([FromBody]Point point)
         {
             if (point.Created == default(DateTime))

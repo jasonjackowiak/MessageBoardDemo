@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Net.Http.Formatting;
 using System.Web.Http;
-using System.Web.Mvc;
 using Newtonsoft.Json.Serialization;
 
 namespace MessageBoard
@@ -16,12 +13,6 @@ namespace MessageBoard
 
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().FirstOrDefault();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-
-            config.Routes.MapHttpRoute(
-                name: "RepliesRoute",
-                routeTemplate: "api/v1/topics/{topicId}/Replies/{id}",
-                defaults: new { Controller = "replies", id = RouteParameter.Optional }
-            );
 
             config.Routes.MapHttpRoute(
                 name: "DefaultRoute",
