@@ -38,7 +38,7 @@ thing.config(function ($routeProvider) {
 
 thing.factory("dataService", function ($http, $q) {
     var _points = [];
-    var _totalPoints = [];
+    var _totalPoints = 0;
     var _characters = [];
     var _characterclass = [];
     var _isInit = false;
@@ -56,6 +56,15 @@ thing.factory("dataService", function ($http, $q) {
             .then(function (result) {
                 //success
                 angular.copy(result.data, _points);
+
+                //testing
+                if (_points.length > 0) {
+                    angular.forEach(_points, function(value, key) {
+                        _totalPoints = _totalPoints + value.amount;
+                    });
+                    //angular.copy(result.data, _totalPoints);
+                }
+
                 _isInit = true;
                 deferred.resolve();
             },
@@ -64,14 +73,6 @@ thing.factory("dataService", function ($http, $q) {
                 deferred.reject();
             });
         return deferred.promise;
-    };
-
-    var _calculateTotalPoints = function () {
-        var deferred = $q.defer();
-        calculateTotalPoints()
-        .then(function (result) {
-            angular.copy(result.data, _totalPoints);
-        });
     };
 
     var _getUser = function () {
@@ -208,7 +209,6 @@ thing.factory("dataService", function ($http, $q) {
     return {
         points: _points,
         totalPoints: _totalPoints,
-        calculateTotalPoints: _calculateTotalPoints,
         getPoints: _getPoints,
         addPoints: _addPoints,
         getCharacters: _getCharacters,

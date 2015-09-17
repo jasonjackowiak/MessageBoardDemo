@@ -1,12 +1,15 @@
 ﻿<div class="message-header">
-    <h1>Chow's Points</h1>
-    <br/>
+    <h1>Chow's Bucks Summary</h1>
+    <div>
+        The stage is set: Jason has chosen a character, the weekend has begun. With many challenges before him, how will he fare?
+    </div>
+    <br />
     <div>
         <a href="#/newpoints">Add New Points</a>
     </div>
 </div>
 
-<div><br/></div>
+<div><br /></div>
 
 <div ng-controller="characterController">
     <div class="lead"><h3>Character Summary</h3></div>
@@ -15,35 +18,36 @@
             <label>
                 <b>Name:</b> {{i.name}}
             </label>
-            <label>
-                <b>Class:</b> (will show type in here)
-            </label>
-            <label>
-                <b>Total Points:</b> 0 (will show actual points one day)
-            </label>
         </div>
     </div>
 </div>
-
 <div ng-controller="characterClassController">
-    testing class data
-    {{data.chowsCharacterClassObject}}
-    {{data.chowsCharacterClassObject.name}}
-    {{data.chowsCharacterClassObject.description}}
-    
+    <label>
+        <b>Type:</b> {{data.chowsCharacterClassObject.name}}
+    </label>
+    <label>
+        <b>Description:</b> {{data.chowsCharacterClassObject.description}}
+    </label>
+
     <div class="selectcharacter row" data-ng-repeat="i in data.chowsCharacterClassObject.attributes">
-        {{i.description}}
+    <label><b>Ability:</b> {{i.description}}</label>
     </div>
 </div>
 
-<div><br/><br/></div>
+<div>
+    <label>
+        <b>Total Points:</b> {{ data.totalPoints }} {{ data.totalPoint }} {{ data.totalpoints }}
+    </label>
+</div>
+
+<div><br /><br /></div>
 
 <div class="progress progress-striped active" data-ng-show="isBusy">
     <div class="bar" style="width: 100%;"></div>
 </div>
 
 <div class="lead">
-<h3>Activity History ({{ data.points.length }} events)</h3>
+    <h3>Activity History ({{ data.points.length }} events)</h3>
 </div>
 <div class="replies">
     <div class="reply row" data-ng-repeat="i in data.points">
