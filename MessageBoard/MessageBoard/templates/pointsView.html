@@ -11,33 +11,36 @@
 
 <div><br /></div>
 
-<div ng-controller="characterController">
-    <div class="lead"><h3>Character Summary</h3></div>
-    <div class="selectcharacter row" data-ng-repeat="i in data.characters">
-        <div class="contents span10">
-            <label>
-                <b>Name:</b> {{i.name}}
+<div class="lead"><h3>Character Summary</h3></div>
+<div class="message">
+    <div ng-controller="characterController">
+        <div class="selectcharacter row" data-ng-repeat="i in data.characters">
+            <div class="contents span10">
+                <label>
+                    <b>Name:</b> {{i.name}}
+                </label>
+            </div>
+        </div>
+    </div>
+    <div ng-controller="characterClassController">
+        <label>
+            <b>Type:</b> {{data.chowsCharacterClassObject.name}}
+        </label>
+        <label>
+            <b>Description:</b> {{data.chowsCharacterClassObject.description}}
+        </label>
+        <div class="selectcharacter row" data-ng-repeat="i in data.chowsCharacterClassObject.attributes">
+            <label style="padding-left: 30px">
+                <b>Ability:</b> {{i.description}}
             </label>
         </div>
     </div>
-</div>
-<div ng-controller="characterClassController">
-    <label>
-        <b>Type:</b> {{data.chowsCharacterClassObject.name}}
-    </label>
-    <label>
-        <b>Description:</b> {{data.chowsCharacterClassObject.description}}
-    </label>
 
-    <div class="selectcharacter row" data-ng-repeat="i in data.chowsCharacterClassObject.attributes">
-    <label><b>Ability:</b> {{i.description}}</label>
+    <div>
+        <label>
+            <b>Total Points:</b> {{ data.totalPoints }} {{ data.totalPoint }} {{ data.totalpoints }}
+        </label>
     </div>
-</div>
-
-<div>
-    <label>
-        <b>Total Points:</b> {{ data.totalPoints }} {{ data.totalPoint }} {{ data.totalpoints }}
-    </label>
 </div>
 
 <div><br /><br /></div>
@@ -49,8 +52,8 @@
 <div class="lead">
     <h3>Activity History ({{ data.points.length }} events)</h3>
 </div>
-<div class="replies">
-    <div class="reply row" data-ng-repeat="i in data.points">
+<div class="messages">
+    <div class="message row" data-ng-repeat="i in data.points">
         <div class="contents span10">
             {{i.characterAwardedTo}} earnt {{i.amount}} points for "{{i.challenge}}" (awarded by {{ i.awardedBy }}).
         </div>

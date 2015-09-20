@@ -221,6 +221,11 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\athlete.jpg" />
+    <Content Include="Content\Images\chow.jpg" />
+    <Content Include="Content\Images\Dj.jpg" />
+    <Content Include="Content\Images\gordonzola.jpg" />
+    <Content Include="Content\Images\Ninjago-Sensei-Wu.png" />
     <Content Include="Content\Site.css">
       <DependentUpon>Site.less</DependentUpon>
     </Content>
