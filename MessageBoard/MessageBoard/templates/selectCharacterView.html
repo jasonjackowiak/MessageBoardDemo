@@ -2,22 +2,39 @@
     <fieldset>
         <div class="message-header">
             <h1>Chow, select your character class!</h1>
-            <div class="lead">Choose from one of the {{ data.characterclasses.length }} awesome classes.</div>
+            <!--<div class="lead">Choose from one of the {{ data.characterclasses.length }} awesome classes.</div>-->
         </div>
         <div class="progress progress-striped active" data-ng-show="isBusy">
             <div class="bar" style="width: 100%;"></div>
         </div>
+        <br />
+
         <div ng-controller="characterClassController">
             <div class="selectcharacter row" data-ng-repeat="i in data.characterclasses">
-                <div class="contents span10">
-                    <label>
-                        {{i.name}} <input type="checkbox" ng-model="newCharacter.classid" ng-true-value="{{i.id}}">
-                    </label>
+                <div class="message">
+                    <div class="contents span10">
+                        <label>
+                            <b>Name:</b> {{i.name}} <input type="checkbox" ng-model="newCharacter.classid" ng-true-value="{{i.id}}">
+                        </label>
+                    </div>
+                    <br />
+                    <div class="contents span10">
+                        <label>
+                            <b>Description:</b> {{i.description}}
+                        </label>
+                    </div>
+                    <br />
+                    <div data-ng-repeat="x in i.attributes">
+                        <label style="padding-left: 30px">
+                            <b>Ability:</b> {{x.description}}
+                        </label>
+                    </div>
                 </div>
-                <div class="contents span10">{{i.description}}</div><br/>
             </div>
         </div>
-        <br/>
+
+
+        <br />
         <div>
             <label for="name">Name</label>
             <textarea name="name" rows="1" cols="20" required="" data-ng-model="newCharacter.name" data-ng-minlength="3" />
