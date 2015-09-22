@@ -29,16 +29,16 @@
         <label>
             <b>Description:</b> {{data.chowsCharacterClassObject.description}}
         </label>
-        <div class="contents span10" data-ng-repeat="i in data.chowsCharacterClassObject.attributes">
-            <label style="padding-left: 30px">
+        <div data-ng-repeat="i in data.chowsCharacterClassObject.attributes">
+            <label>
                 <b>Ability:</b> {{i.description}}
             </label>
         </div>
     </div>
 
-    <div>
+    <div ng-controller="totalPointsController">
         <label>
-            <b>Total Points:</b> {{ data.totalPoints }} {{ data.totalPoint }} {{ data.totalpoints }}
+            <b>Total Points:</b> {{totalPoints}}
         </label>
     </div>
 </div>

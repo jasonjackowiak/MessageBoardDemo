@@ -38,7 +38,6 @@ thing.config(function ($routeProvider) {
 
 thing.factory("dataService", function ($http, $q) {
     var _points = [];
-    var _totalPoints = 0;
     var _characters = [];
     var _characterclass = [];
     var _isInit = false;
@@ -50,21 +49,28 @@ thing.factory("dataService", function ($http, $q) {
         return _isInit;
     };
 
+    var _getTotalPoints = function () {
+        var deferred = $q.defer();
+        $http.get("api/v1/totalpoints")
+            .then(function (result) {
+                //success
+               var things = result.data;
+                _isInit = true;
+                deferred.resolve(things);
+            },
+            function () {
+                //fail
+                deferred.reject();
+            });
+        return deferred.promise;
+    };
+
     var _getPoints = function () {
         var deferred = $q.defer();
         $http.get("api/v1/points")
             .then(function (result) {
                 //success
                 angular.copy(result.data, _points);
-
-                //testing
-                if (_points.length > 0) {
-                    angular.forEach(_points, function(value, key) {
-                        _totalPoints = _totalPoints + value.amount;
-                    });
-                    //angular.copy(result.data, _totalPoints);
-                }
-
                 _isInit = true;
                 deferred.resolve();
             },
@@ -114,8 +120,8 @@ thing.factory("dataService", function ($http, $q) {
                 angular.copy(result.data, _characters);
                 //lil hacky to get the id for Chow's character
                 if (_characters.length > 0) {
-                  _chowsCharacterClassId = _characters[0].classId - 1;
-        }
+                    _chowsCharacterClassId = _characters[0].classId - 1;
+                }
                 _isInit = true;
                 deferred.resolve();
             },
@@ -132,12 +138,9 @@ thing.factory("dataService", function ($http, $q) {
             .then(function (result) {
                 //success
                 angular.copy(result.data, _characterclass);
-        
-        //testing
-        if (_characterclass.length > 0) {
-           angular.copy(_characterclass[_chowsCharacterClassId], _chowsCharacterClassObject);
-        }
-
+                if (_characterclass.length > 0) {
+                    angular.copy(_characterclass[_chowsCharacterClassId], _chowsCharacterClassObject);
+                }
                 _isInit = true;
                 deferred.resolve();
             },
@@ -208,7 +211,6 @@ thing.factory("dataService", function ($http, $q) {
 
     return {
         points: _points,
-        totalPoints: _totalPoints,
         getPoints: _getPoints,
         addPoints: _addPoints,
         getCharacters: _getCharacters,
@@ -219,7 +221,8 @@ thing.factory("dataService", function ($http, $q) {
         addCharacter: _addCharacter,
         isReady: _isReady,
         chowsCharacterClassId: _chowsCharacterClassId,
-        chowsCharacterClassObject: _chowsCharacterClassObject
+        chowsCharacterClassObject: _chowsCharacterClassObject,
+        getTotalPoints: _getTotalPoints,
         //isAuthenticated: _isAuthenticated
     };
 });
@@ -231,18 +234,41 @@ function pointsController($scope, $http, dataService) {
     if (dataService.isReady() == false) {
         $scope.isBusy = true;
         dataService.getPoints()
-            .then(function() {
-                    //success
-                },
-                function() {
+            .then(function () {
+                //success
+            },
+                function () {
                     //fail
                     alert("could not load points, sad face.");
                 })
-            .then(function() {
+            .then(function () {
                 $scope.isBusy = false;
             });
     }
 };
+
+function totalPointsController($scope, $http, dataService) {
+    $scope.totalPoints = 0;
+    $scope.isBusy = false;
+
+    if (dataService.isReady() == false) {
+        $scope.isBusy = true;
+        dataService.getTotalPoints()
+            .then(function (result) {
+                //success
+                $scope.totalPoints = result;
+            },
+                function () {
+                    //fail
+                    alert("could not load points total, sad face.");
+                })
+            .then(function () {
+                $scope.isBusy = false;
+            });
+    }
+};
+
+
 
 function newPointsController($scope, $http, $window, dataService) {
     $scope.newPoints = {};
@@ -283,7 +309,6 @@ function characterController($scope, $http, dataService) {
 function characterClassController($scope, $http, dataService) {
     $scope.data = dataService;
     $scope.isBusy = false;
-        $scope.data.test = "";
 
     if (dataService.isReady() == false) {
         $scope.isBusy = true;
@@ -335,6 +360,7 @@ function singleCharacterController($scope, dataService, $window) {
 
 //bind the controller to the function
 thing.controller('pointsController', pointsController);
+thing.controller('totalPointsController', totalPointsController);
 thing.controller('newPointsController', newPointsController);
 
 thing.controller('characterController', characterController);
