@@ -7,25 +7,22 @@
         <div class="progress progress-striped active" data-ng-show="isBusy">
             <div class="bar" style="width: 100%;"></div>
         </div>
-        <br />
 
         <div ng-controller="characterClassController">
             <div class="selectcharacter row" data-ng-repeat="i in data.characterclasses">
                 <div class="message">
-                    <div class="contents span10">
+                    <div class="contents">
                         <label>
                             <b>Name:</b> {{i.name}} <input type="checkbox" ng-model="newCharacter.classid" ng-true-value="{{i.id}}">
                         </label>
                     </div>
-                    <br />
-                    <div class="contents span10">
+                    <div class="contents">
                         <label>
                             <b>Description:</b> {{i.description}}
                         </label>
                     </div>
-                    <br />
                     <div data-ng-repeat="x in i.attributes">
-                        <label style="padding-left: 30px">
+                        <label>
                             <b>Ability:</b> {{x.description}}
                         </label>
                     </div>

@@ -22,4 +22,9 @@
   margin-left: 10px;
   text-shadow: 2px 2px 2px;
 }
+@media all and (max-width: 768px) {
+  .main {
+    margin-left: 0;
+  }
+}
 /*# sourceMappingURL=Site.css.map */
