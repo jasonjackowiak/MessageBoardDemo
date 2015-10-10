@@ -27,7 +27,7 @@ namespace MessageBoard.Controllers
             results = _repo.GetCharactersWithPoints();
 
             var character = results
-                .OrderByDescending(t => t.Id)
+                .OrderBy(t => t.Id)
                 .Take(5)
                 .ToList();
             return character;

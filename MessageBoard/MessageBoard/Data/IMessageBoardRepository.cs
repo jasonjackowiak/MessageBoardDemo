@@ -23,8 +23,14 @@ namespace MessageBoard.Data
         //characters
         IQueryable<Character> GetCharacters();
         IQueryable<Character> GetCharactersWithPoints();
-        IQueryable<CharacterClass> GetCharacterClasses();
+
         bool AddCharacter(Character newCharacter);
         Character GetFirstCharacter();
+
+        //character classes
+        IQueryable<CharacterClass> GetCharacterClasses();
+        CharacterClass GetCharacterClassForCharacter(int id);
+        bool AddCharacterClass(CharacterClass newCharacterClass);
+
     }
 }

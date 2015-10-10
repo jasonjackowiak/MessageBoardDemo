@@ -91,9 +91,28 @@ namespace MessageBoard.Data
             }
         }
 
+        public bool AddCharacterClass(CharacterClass newCharacterClass)
+        {
+            try
+            {
+                _context.CharacterClasses.Add(newCharacterClass);
+                return true;
+            }
+            catch (Exception e)
+            {
+                //TODO logging
+                return false;
+            }
+        }
+
         public IQueryable<CharacterClass> GetCharacterClasses()
         {
             return _context.CharacterClasses.Include("Attributes");
+        }
+
+        public CharacterClass GetCharacterClassForCharacter(int Id)
+        {
+            return _context.CharacterClasses.Include("Attributes").FirstOrDefault(x => x.Id == Id);
         }
 
         public IQueryable<Character> GetCharacters()

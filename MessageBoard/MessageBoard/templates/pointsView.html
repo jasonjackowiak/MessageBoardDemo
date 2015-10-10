@@ -14,10 +14,10 @@
 <div class="lead"><h3>Character Summary</h3></div>
 <div class="message">
     <div ng-controller="characterController">
-        <div class="selectcharacter row" data-ng-repeat="i in data.characters">
+        <div class="selectcharacter row">
             <div class="contents span10">
                 <label>
-                    <b>Name:</b> {{i.name}}
+                    <b>Name:</b> {{data.characters[0].name}}
                 </label>
             </div>
         </div>

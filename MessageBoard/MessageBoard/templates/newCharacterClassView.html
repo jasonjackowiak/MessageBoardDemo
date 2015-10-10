@@ -1,0 +1,20 @@
+﻿<h1>New Class</h1>
+
+<form name="newClassForm" novalidate="" data-ng-submit="save()">
+    <fieldset>
+        <div>
+            <label for="name">Name</label>
+            <input name="name" type="text" data-ng-model="newCharacterClass.name" />
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <textarea name="challenge" rows="5" cols="30" required="" data-ng-model="newCharacterClass.description" data-ng-minlength="15" />
+            <span class="error" data-ng-show="newPointsForm.challenge.$error.required">*</span>
+            <span class="error" data-ng-show="newPointsForm.challenge.$error.minlength">Minimum 15 Characters</span>
+        </div>
+        <div>
+            <input type="submit" class="btn" value="Save" data-ng-disabled="newClassForm.$invalid" />
+            <a href="/" class="btn">Cancel</a>
+        </div>
+    </fieldset>
+</form>

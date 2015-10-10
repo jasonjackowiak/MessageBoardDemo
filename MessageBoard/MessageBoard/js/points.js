@@ -33,6 +33,11 @@ thing.config(function ($routeProvider) {
     templateUrl: "/templates/singleCharacterView.html",
     controller: "singleCharacterController",
 });
+$routeProvider.when("/newcharacterclass",
+{
+    templateUrl: "/templates/newCharacterClassView.html",
+    controller: "newCharacterClassController",
+});
     $routeProvider.otherwise({ redirectTo: "/" });
 });
 
@@ -118,7 +123,7 @@ thing.factory("dataService", function ($http, $q) {
             .then(function (result) {
                 //success
                 angular.copy(result.data, _characters);
-                //lil hacky to get the id for Chow's character
+                //lil hacky to get the id for Chow's character. The -1 is because we are using an array object (starts at 0, not 1).
                 if (_characters.length > 0) {
                     _chowsCharacterClassId = _characters[0].classId - 1;
                 }
@@ -159,6 +164,22 @@ thing.factory("dataService", function ($http, $q) {
                 var newlyCreatedCharacter = result.data;
                 _points.splice(0, 0, newlyCreatedCharacter);
                 deferred.resolve(newlyCreatedCharacter);
+            },
+            function () {
+                //error
+                deferred.reject();
+            });
+        return deferred.promise;
+    };
+
+    var _addCharacterClass = function (newCharacterClass) {
+        var deferred = $q.defer();
+        $http.post("/api/v1/characterclass", newCharacterClass)
+            .then(function (result) {
+                //success
+                var newlyCreatedCharacterClass = result.data;
+                _points.splice(0, 0, newlyCreatedCharacterClass);
+                deferred.resolve(newlyCreatedCharacterClass);
             },
             function () {
                 //error
@@ -218,6 +239,7 @@ thing.factory("dataService", function ($http, $q) {
         characters: _characters,
         characterclasses: _characterclass,
         getCharacterClass: _getCharacterClass,
+        addCharacterClass: _addCharacterClass,
         addCharacter: _addCharacter,
         isReady: _isReady,
         chowsCharacterClassId: _chowsCharacterClassId,
@@ -342,6 +364,22 @@ function newCharacterController($scope, $http, $window, dataService) {
     };
 };
 
+function newCharacterClassController($scope, $http, $window, dataService) {
+    $scope.newCharacter = {};
+
+    $scope.save = function () {
+        dataService.addCharacterClass($scope.newCharacterClass)
+            .then(function () {
+                //success
+                $window.location = "/";
+            },
+                function () {
+                    //error
+                    alert("could not save the new character class, sad face.");
+                });
+    };
+};
+
 function singleCharacterController($scope, dataService, $window) {
     $scope.character = null;
     $scope.newReply = {};
@@ -365,7 +403,9 @@ thing.controller('newPointsController', newPointsController);
 
 thing.controller('characterController', characterController);
 thing.controller('newCharacterController', newCharacterController);
+
 thing.controller('characterClassController', characterClassController);
+thing.controller('newCharacterClassController', newCharacterClassController);
 
 thing.controller('singleCharacterController', singleCharacterController);
 //var thing = angular.module('character', ['ngRoute']);
