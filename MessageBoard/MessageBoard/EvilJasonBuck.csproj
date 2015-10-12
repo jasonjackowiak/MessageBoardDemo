@@ -339,12 +339,11 @@
       <DependentUpon>Site.css</DependentUpon>
     </Content>
     <None Include="Content\Site.less" />
-    <Content Include="js\Controllers\home.js" />
+    <Content Include="js\Controllers\homeController.js" />
     <Content Include="js\Modules\application.js" />
     <Content Include="js\Modules\fileUploader.js" />
     <Content Include="js\points.js" />
     <Content Include="js\Services\entity.js" />
-    <Content Include="js\uploadimage.js" />
     <Content Include="ReferenceData\CharacterAttribute.txt" />
     <Content Include="ReferenceData\CharacterClass.txt" />
     <Content Include="Scripts\angular-animate.js" />
@@ -1193,7 +1192,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="templates\newCharacterClassView.html" />
-    <Content Include="templates\uploadImage.html" />
+    <Content Include="templates\imageUploadView.html" />
     <Content Include="templates\newPointsView.html" />
     <Content Include="templates\charactersView.html" />
     <Content Include="templates\pointsView.html" />

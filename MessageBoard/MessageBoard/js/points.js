@@ -33,10 +33,15 @@ thing.config(function ($routeProvider) {
     templateUrl: "/templates/singleCharacterView.html",
     controller: "singleCharacterController",
 });
-$routeProvider.when("/newcharacterclass",
+    $routeProvider.when("/newcharacterclass",
+    {
+        templateUrl: "/templates/newCharacterClassView.html",
+        controller: "newCharacterClassController",
+    });
+    $routeProvider.when("/imageUpload",
 {
-    templateUrl: "/templates/newCharacterClassView.html",
-    controller: "newCharacterClassController",
+    templateUrl: "/templates/uploadImageView.html",
+    controller: "imageUploadController",
 });
     $routeProvider.otherwise({ redirectTo: "/" });
 });
@@ -48,6 +53,7 @@ thing.factory("dataService", function ($http, $q) {
     var _isInit = false;
     var _chowsCharacterClassId = 0;
     var _chowsCharacterClassObject = [];
+    var _imageThing = [];
     //var _isAuthenticated = false;
 
     var _isReady = function () {
@@ -59,7 +65,7 @@ thing.factory("dataService", function ($http, $q) {
         $http.get("api/v1/totalpoints")
             .then(function (result) {
                 //success
-               var things = result.data;
+                var things = result.data;
                 _isInit = true;
                 deferred.resolve(things);
             },
@@ -226,9 +232,62 @@ thing.factory("dataService", function ($http, $q) {
                         deferred.reject();
                     });
         }
-
         return deferred.promise;
     };
+
+    var _imageThing = function(newCharacterClass) {
+        var deferred = $q.defer();
+        $http.post("/api/v1/imageupload", newImage)
+            .then(function(result) {
+                //success
+                var getModelAsFormData = function(data) {
+                    var dataAsFormData = new FormData();
+                    angular.forEach(data, function(value, key) {
+                        dataAsFormData.append(key, value);
+                    });
+                    return dataAsFormData;
+                };
+
+                var saveModel = function(data, url) {
+                    var deferred = $q.defer();
+                    $http({
+                        url: url,
+                        method: "POST",
+                        data: getModelAsFormData(data),
+                        transformRequest: angular.identity,
+                        headers: { 'Content-Type': undefined }
+                    }).success(function(result) {
+                        deferred.resolve(result);
+                    }).error(function(result, status) {
+                        deferred.reject(status);
+                    });
+                    return deferred.promise;
+                };
+
+                return {
+                        saveModel: saveModel
+                    }
+                    .directive("akFileModel", [
+                        "$parse",
+                        function($parse) {
+                            return {
+                                restrict: "A",
+                                link: function(scope, element, attrs) {
+                                    var model = $parse(attrs.akFileModel);
+                                    var modelSetter = model.assign;
+                                    element.bind("change", function() {
+                                        scope.$apply(function() {
+                                            modelSetter(scope, element[0].files[0]);
+                                        });
+                                    });
+                                }
+                            };
+                        }
+                    ]);
+            });
+    }
+
+    //})(window, document);
 
     return {
         points: _points,
@@ -245,6 +304,7 @@ thing.factory("dataService", function ($http, $q) {
         chowsCharacterClassId: _chowsCharacterClassId,
         chowsCharacterClassObject: _chowsCharacterClassObject,
         getTotalPoints: _getTotalPoints,
+        imageThing: _imageThing
         //isAuthenticated: _isAuthenticated
     };
 });
@@ -393,7 +453,15 @@ function singleCharacterController($scope, dataService, $window) {
                 //error
                 $window.location = "#/";
             });
+};
 
+function imageUploadController($scope, dataService) {
+    $scope.saveTutorial = null;
+
+    dataService.saveTutorial(tutorial)
+                 .then(function (data) {
+                     console.log(data);
+                 });
 };
 
 //bind the controller to the function
@@ -408,4 +476,6 @@ thing.controller('characterClassController', characterClassController);
 thing.controller('newCharacterClassController', newCharacterClassController);
 
 thing.controller('singleCharacterController', singleCharacterController);
-//var thing = angular.module('character', ['ngRoute']);
+
+//images
+thing.controller('imageUploadController', imageUploadController);
