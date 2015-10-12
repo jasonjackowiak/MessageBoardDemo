@@ -143,5 +143,20 @@ namespace MessageBoard.Data
         {
             return _context.Characters.FirstOrDefault();
         }
+
+        public bool AddImage(Image image)
+        {
+            try
+            {
+                _context.Images.Add(image);
+                return true;
+            }
+            catch (Exception e)
+            {
+                //TODO logging
+                return false;
+            }
+        }
+
     }
 }

@@ -32,5 +32,7 @@ namespace MessageBoard.Data
         CharacterClass GetCharacterClassForCharacter(int id);
         bool AddCharacterClass(CharacterClass newCharacterClass);
 
+        //images
+        bool AddImage(Image image);
     }
 }

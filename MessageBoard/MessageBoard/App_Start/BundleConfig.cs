@@ -14,6 +14,13 @@ namespace MessageBoard
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
+            //custom js
+            bundles.Add(new ScriptBundle("~/bundles/application").Include(
+                        "~/Scripts/Application/Modules/application.js",
+                        "~/Scripts/Application/Modules/fileUploader.js",
+                        "~/Scripts/Application/Controllers/home.js",
+                        "~/Scripts/Application/Services/entity.js"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

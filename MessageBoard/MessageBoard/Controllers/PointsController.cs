@@ -31,7 +31,8 @@ namespace MessageBoard.Controllers
                 .OrderByDescending(t => t.Created)
                 .Take(25)
                 .ToList();
-            return points;
+
+            return points ?? null;
         }
 
         public HttpResponseMessage Post([FromBody]Point point)

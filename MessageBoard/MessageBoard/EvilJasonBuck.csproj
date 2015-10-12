@@ -192,8 +192,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CharacterClassController.cs" />
     <Compile Include="Controllers\CharacterController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\TotalPointsController.cs" />
     <Compile Include="Controllers\PointsController.cs" />
+    <Compile Include="Data\Image.cs" />
     <Compile Include="Data\CharacterAttribute.cs" />
     <Compile Include="Data\Character.cs" />
     <Compile Include="Data\CharacterClass.cs" />
@@ -337,7 +339,12 @@
       <DependentUpon>Site.css</DependentUpon>
     </Content>
     <None Include="Content\Site.less" />
+    <Content Include="js\Controllers\home.js" />
+    <Content Include="js\Modules\application.js" />
+    <Content Include="js\Modules\fileUploader.js" />
     <Content Include="js\points.js" />
+    <Content Include="js\Services\entity.js" />
+    <Content Include="js\uploadimage.js" />
     <Content Include="ReferenceData\CharacterAttribute.txt" />
     <Content Include="ReferenceData\CharacterClass.txt" />
     <Content Include="Scripts\angular-animate.js" />
@@ -1186,6 +1193,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="templates\newCharacterClassView.html" />
+    <Content Include="templates\uploadImage.html" />
     <Content Include="templates\newPointsView.html" />
     <Content Include="templates\charactersView.html" />
     <Content Include="templates\pointsView.html" />
@@ -1233,7 +1241,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

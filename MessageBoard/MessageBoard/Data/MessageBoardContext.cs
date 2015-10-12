@@ -25,5 +25,6 @@ namespace MessageBoard.Data
         public DbSet<CharacterClass> CharacterClasses { get; set; }
         public DbSet<CharacterAttribute> CharacterAttributes { get; set; }
         public DbSet<Character> Characters { get; set; }
+        public DbSet<Image> Images { get; set; }
     }
 }

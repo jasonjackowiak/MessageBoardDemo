@@ -190,5 +190,22 @@ namespace MessageBoard.Tests.Fakes
         {
             throw new NotImplementedException();
         }
+
+
+        public CharacterClass GetCharacterClassForCharacter(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool AddCharacterClass(CharacterClass newCharacterClass)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public bool AddImage(Image image)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -28,10 +28,9 @@ namespace MessageBoard.Controllers
             results = _repo.GetPoints();
 
             int totalPoints = 0;
-            foreach (Point p in results)
-            {
-                totalPoints += p.Amount;
-            }
+            if (results.Any())
+                totalPoints += Enumerable.Sum(results, p => p.Amount);
+
             return totalPoints;
         }
 

@@ -10,13 +10,12 @@ namespace MessageBoard.Data
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public byte[] ImageData { get; set; }
-        public string ImageMimeType { get; set; }
+
+        //public byte[] ImageData { get; set; }
+        //public string ImageMimeType { get; set; }
+
+        public int ImageId { get; set; }
 
         public ICollection<CharacterAttribute> Attributes { get; set; }
     }
 }
-
-//Chef
-//good at food
-//blabla
