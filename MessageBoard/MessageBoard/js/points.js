@@ -43,7 +43,7 @@ thing.factory("dataService", function ($http, $q) {
     var _chowsCharacterClassId = 0;
     var _chowsCharacterClassObject = [];
     var _image = [];
-    //var _isAuthenticated = false;
+    var _isAuthenticated = false;
 
     var _isReady = function () {
         return _isInit;
@@ -81,13 +81,13 @@ thing.factory("dataService", function ($http, $q) {
         return deferred.promise;
     };
 
-    var _getUser = function () {
+    var _isAuthenticated = function () {
         var deferred = $q.defer();
-        $http.get("api/v1/points")
+        $http.get("api/v1/security")
             .then(function (result) {
                 //success
-                _isAuthenticated = true;
-                deferred.resolve();
+                var isUserAuthenticated = result.data;
+                deferred.resolve(isUserAuthenticated);
             },
                 function () {
                     //fail
@@ -285,10 +285,32 @@ thing.factory("dataService", function ($http, $q) {
         chowsCharacterClassObject: _chowsCharacterClassObject,
         getTotalPoints: _getTotalPoints,
         image: _image,
-        addImage: _addImage
-        //isAuthenticated: _isAuthenticated
+        addImage: _addImage,
+        isAuthenticated: _isAuthenticated
     };
 });
+
+function authenticationController($scope, dataService) {
+    $scope.data = dataService;
+    $scope.isBusy = false;
+
+    if (dataService.isReady() == false) {
+        $scope.isBusy = true;
+        dataService.isAuthenticated()
+            .then(function(result) {
+                //success
+                    $scope.isAuthenticated = result;
+                },
+                function() {
+                    //fail
+                    alert("there was a problem checking your authorisation");
+                })
+            .then(function() {
+                $scope.isBusy = false;
+            });
+    }
+};
+
 
 function pointsController($scope, $http, dataService) {
     $scope.data = dataService;
@@ -296,18 +318,18 @@ function pointsController($scope, $http, dataService) {
 
     if (dataService.isReady() == false) {
         $scope.isBusy = true;
-        dataService.getPoints()
-            .then(function () {
-                //success
-            },
-                function () {
-                    //fail
-                    alert("could not load points, sad face.");
-                })
-            .then(function () {
-                $scope.isBusy = false;
-            });
-    }
+            dataService.getPoints()
+                .then(function() {
+                        //success
+                    },
+                    function() {
+                        //fail
+                        alert("could not load points, sad face.");
+                    })
+                .then(function() {
+                    $scope.isBusy = false;
+                });
+        }
 };
 
 function totalPointsController($scope, $http, dataService) {
@@ -465,3 +487,6 @@ thing.controller('singleCharacterController', singleCharacterController);
 
 //images
 thing.controller('newImageController', newImageController);
+
+//authentication
+thing.controller('authenticationController', authenticationController);

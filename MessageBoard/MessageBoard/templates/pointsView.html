@@ -5,7 +5,13 @@
     </div>
     <br />
     <div>
-        <a href="#/newpoints">Add New Points</a>
+        <div ng-controller="authenticationController">
+            <div ng-if="isAuthenticated == true">
+                <a href="#/newpoints">Add New Points</a>
+            </div>
+            
+        </div>
+
     </div>
 </div>
 
