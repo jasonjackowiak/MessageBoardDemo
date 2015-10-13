@@ -29,12 +29,30 @@ namespace MessageBoard.Controllers
         //    return Json("Tutorial Saved", JsonRequestBehavior.AllowGet);
         //}
 
+        public IEnumerable<Image> Get()
+        {
+            IQueryable<Image> results = _repo.GetImages();
+
+            var images = results
+                .OrderByDescending(t => t.Id)
+                .Take(25)
+                .ToList();
+
+            return images;
+        }
+
         //testing
         public HttpResponseMessage Post([FromBody] Image image)
         {
-            //return Json("Tutorial Saved", JsonRequestBehavior.AllowGet);
-
-            return new HttpResponseMessage();
+            if ((_repo.AddImage(image)) &&
+            _repo.Save())
+            {
+                return Request.CreateResponse(HttpStatusCode.Created, image);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
         }
     }
 }

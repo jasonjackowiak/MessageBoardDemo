@@ -1,24 +1,24 @@
-﻿<form class="form-horizontal">
+﻿<form class="form-horizontal" name="newImageForm">
     <h4>Image Upload</h4>
     <hr />
     <div class="form-group">
         <label for="title" class="col-md-2 control-label">Title</label>
         <div class="col-md-10">
-            <input type="text" data-ng-model="image.title" name="title" class="form-control" />
+            <input type="text" data-ng-model="newImage.title" name="title" class="form-control" />
         </div>
     </div>
 
     <div class="form-group">
         <label for="description" class="col-md-2 control-label">Description</label>
         <div class="col-md-10">
-            <textarea data-ng-model="image.description" name="description" class="form-control"></textarea>
+            <textarea data-ng-model="newImage.description" name="description" class="form-control"></textarea>
         </div>
     </div>
 
     <div class="form-group">
         <label for="attachment" class="col-md-2 control-label">Attachment</label>
         <div class="col-md-10">
-            <input type="file" name="attachment" class="form-control" data-ak-file-model="image.attachment" />
+            <input type="file" name="attachment" class="form-control" data-ak-file-model="newImage.attachment" />
         </div>
     </div>
 
@@ -27,7 +27,7 @@
                 <input type="button" class="btn btn-primary" value="Save" data-ng-click="saveTutorial(imageUpload)" />
             </div>-->
         <div>
-            <input type="submit" class="btn" value="Save" data-ng-disabled="image.$invalid" />
+            <input type="submit" class="btn" value="Save" data-ng-disabled="newImageForm.$invalid" />
             <a href="/" class="btn">Cancel</a>
         </div>
     </div>

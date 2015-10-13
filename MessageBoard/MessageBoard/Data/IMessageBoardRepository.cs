@@ -33,6 +33,7 @@ namespace MessageBoard.Data
         bool AddCharacterClass(CharacterClass newCharacterClass);
 
         //images
+        IQueryable<Image> GetImages();
         bool AddImage(Image image);
     }
 }

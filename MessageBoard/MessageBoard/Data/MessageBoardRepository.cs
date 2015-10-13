@@ -158,5 +158,10 @@ namespace MessageBoard.Data
             }
         }
 
+        public IQueryable<Image> GetImages()
+        {
+            return _context.Images;
+        }
+
     }
 }

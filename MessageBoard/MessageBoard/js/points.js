@@ -25,7 +25,7 @@ thing.config(function ($routeProvider) {
     $routeProvider.when("/imageupload",
 {
     templateUrl: "/templates/imageUploadView.html",
-    controller: "imageController",
+    controller: "newImageController",
 });
     $routeProvider.when("/newcharacterclass",
     {
@@ -232,19 +232,13 @@ thing.factory("dataService", function ($http, $q) {
         return dataAsFormData;
     };
 
-    var _saveImage = function (imageUpload) {
+    var _addImage = function (newImage) {
         var deferred = $q.defer();
-        $http.post("/api/v1/image", imageUpload)
+        $http.post("/api/v1/image", newImage)
         .then(function (result) {
             //success
-            var newImage = result.data;
-            //$http({
-            //    //url: url,
-            //    method: "POST",
-            //    data: getModelAsFormData(data),
-            //    transformRequest: angular.identity,
-            //    headers: { 'Content-Type': undefined }
-            deferred.resolve(newImage);
+            var newlyUploadedImage = result.data;
+            deferred.resolve(newlyUploadedImage);
         },
             function () {
                 //error
@@ -291,7 +285,7 @@ thing.factory("dataService", function ($http, $q) {
         chowsCharacterClassObject: _chowsCharacterClassObject,
         getTotalPoints: _getTotalPoints,
         image: _image,
-        saveImage: _saveImage
+        addImage: _addImage
         //isAuthenticated: _isAuthenticated
     };
 });
@@ -410,7 +404,7 @@ function newCharacterController($scope, $http, $window, dataService) {
 };
 
 function newCharacterClassController($scope, $http, $window, dataService) {
-    $scope.newCharacter = {};
+    //$scope.newCharacter = {};
 
     $scope.save = function () {
         dataService.addCharacterClass($scope.newCharacterClass)
@@ -440,18 +434,20 @@ function singleCharacterController($scope, dataService, $window) {
             });
 };
 
-function imageController($scope, dataService) {
-    $scope.newImage = null;
+function newImageController($scope, dataService, $window) {
+    //$scope.newImage = null;
 
-    dataService.saveImage($scope.image)
-                 .then(function () {
-                     //success
-                     //$scope.newImage = Image;
-                 },
-                             function () {
-                                 //error
-                                 $window.location = "#/";
-                             });
+    $scope.save = function() {
+        dataService.addImage($scope.newImage)
+            .then(function() {
+                    //success
+                    $window.location = "/";
+                },
+                function() {
+                    //error
+                    $window.location = "#/";
+                });
+    };
 };
 
 //bind the controller to the function
@@ -468,4 +464,4 @@ thing.controller('newCharacterClassController', newCharacterClassController);
 thing.controller('singleCharacterController', singleCharacterController);
 
 //images
-thing.controller('imageController', imageController);
+thing.controller('newImageController', newImageController);
