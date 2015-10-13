@@ -5,7 +5,7 @@ thing.config(function ($routeProvider) {
     {
         templateUrl: "/templates/pointsView.html",
         controller: "pointsController",
-        controllerAs: "app"
+        //controllerAs: "app"
     });
     $routeProvider.when("/newpoints",
     {
@@ -21,28 +21,17 @@ thing.config(function ($routeProvider) {
 {
     templateUrl: "/templates/selectCharacterView.html",
     controller: "newCharacterController",
-    //controller: "characterController",
 });
-    $routeProvider.when("/newcharacter",
-    {
-        templateUrl: "/templates/newCharacterView.html",
-        controller: "newCharacterController",
-    });
-    $routeProvider.when("/singlecharacter",
+    $routeProvider.when("/imageupload",
 {
-    templateUrl: "/templates/singleCharacterView.html",
-    controller: "singleCharacterController",
+    templateUrl: "/templates/imageUploadView.html",
+    controller: "imageController",
 });
     $routeProvider.when("/newcharacterclass",
     {
         templateUrl: "/templates/newCharacterClassView.html",
         controller: "newCharacterClassController",
     });
-    $routeProvider.when("/imageUpload",
-{
-    templateUrl: "/templates/uploadImageView.html",
-    controller: "imageUploadController",
-});
     $routeProvider.otherwise({ redirectTo: "/" });
 });
 
@@ -53,7 +42,7 @@ thing.factory("dataService", function ($http, $q) {
     var _isInit = false;
     var _chowsCharacterClassId = 0;
     var _chowsCharacterClassObject = [];
-    var _imageThing = [];
+    var _image = [];
     //var _isAuthenticated = false;
 
     var _isReady = function () {
@@ -235,57 +224,54 @@ thing.factory("dataService", function ($http, $q) {
         return deferred.promise;
     };
 
-    var _imageThing = function(newCharacterClass) {
+    var getModelAsFormData = function (data) {
+        var dataAsFormData = new FormData();
+        angular.forEach(data, function (value, key) {
+            dataAsFormData.append(key, value);
+        });
+        return dataAsFormData;
+    };
+
+    var _saveImage = function (imageUpload) {
         var deferred = $q.defer();
-        $http.post("/api/v1/imageupload", newImage)
-            .then(function(result) {
-                //success
-                var getModelAsFormData = function(data) {
-                    var dataAsFormData = new FormData();
-                    angular.forEach(data, function(value, key) {
-                        dataAsFormData.append(key, value);
-                    });
-                    return dataAsFormData;
-                };
-
-                var saveModel = function(data, url) {
-                    var deferred = $q.defer();
-                    $http({
-                        url: url,
-                        method: "POST",
-                        data: getModelAsFormData(data),
-                        transformRequest: angular.identity,
-                        headers: { 'Content-Type': undefined }
-                    }).success(function(result) {
-                        deferred.resolve(result);
-                    }).error(function(result, status) {
-                        deferred.reject(status);
-                    });
-                    return deferred.promise;
-                };
-
-                return {
-                        saveModel: saveModel
-                    }
-                    .directive("akFileModel", [
-                        "$parse",
-                        function($parse) {
-                            return {
-                                restrict: "A",
-                                link: function(scope, element, attrs) {
-                                    var model = $parse(attrs.akFileModel);
-                                    var modelSetter = model.assign;
-                                    element.bind("change", function() {
-                                        scope.$apply(function() {
-                                            modelSetter(scope, element[0].files[0]);
-                                        });
-                                    });
-                                }
-                            };
-                        }
-                    ]);
+        $http.post("/api/v1/image", imageUpload)
+        .then(function (result) {
+            //success
+            var newImage = result.data;
+            //$http({
+            //    //url: url,
+            //    method: "POST",
+            //    data: getModelAsFormData(data),
+            //    transformRequest: angular.identity,
+            //    headers: { 'Content-Type': undefined }
+            deferred.resolve(newImage);
+        },
+            function () {
+                //error
+                deferred.reject();
             });
-    }
+        return deferred.promise;
+    };
+
+    //.directive("akFileModel", [
+    //    "$parse",
+    //    function ($parse) {
+    //        return {
+    //            restrict: "A",
+    //            link: function (scope, element, attrs) {
+    //                var model = $parse(attrs.akFileModel);
+    //                var modelSetter = model.assign;
+    //                element.bind("change", function () {
+    //                    scope.$apply(function () {
+    //                        modelSetter(scope, element[0].files[0]);
+    //                    });
+    //                });
+    //            }
+    //        };
+    //    }
+    //]);
+    //});
+
 
     //})(window, document);
 
@@ -304,7 +290,8 @@ thing.factory("dataService", function ($http, $q) {
         chowsCharacterClassId: _chowsCharacterClassId,
         chowsCharacterClassObject: _chowsCharacterClassObject,
         getTotalPoints: _getTotalPoints,
-        imageThing: _imageThing
+        image: _image,
+        saveImage: _saveImage
         //isAuthenticated: _isAuthenticated
     };
 });
@@ -349,8 +336,6 @@ function totalPointsController($scope, $http, dataService) {
             });
     }
 };
-
-
 
 function newPointsController($scope, $http, $window, dataService) {
     $scope.newPoints = {};
@@ -455,13 +440,18 @@ function singleCharacterController($scope, dataService, $window) {
             });
 };
 
-function imageUploadController($scope, dataService) {
-    $scope.saveTutorial = null;
+function imageController($scope, dataService) {
+    $scope.newImage = null;
 
-    dataService.saveTutorial(tutorial)
-                 .then(function (data) {
-                     console.log(data);
-                 });
+    dataService.saveImage($scope.image)
+                 .then(function () {
+                     //success
+                     //$scope.newImage = Image;
+                 },
+                             function () {
+                                 //error
+                                 $window.location = "#/";
+                             });
 };
 
 //bind the controller to the function
@@ -478,4 +468,4 @@ thing.controller('newCharacterClassController', newCharacterClassController);
 thing.controller('singleCharacterController', singleCharacterController);
 
 //images
-thing.controller('imageUploadController', imageUploadController);
+thing.controller('imageController', imageController);

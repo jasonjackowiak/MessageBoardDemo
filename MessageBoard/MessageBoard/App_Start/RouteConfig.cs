@@ -26,6 +26,13 @@ namespace MessageBoard
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "CharacterClass", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Image",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Image", action = "Index", id = UrlParameter.Optional }
+            );
+
         }
     }
 }

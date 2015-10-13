@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web.Http;
 using System.Web.Mvc;
 using MessageBoard.Data;
 using MessageBoard.Models;
@@ -13,7 +14,7 @@ using System.Web;
 
 namespace MessageBoard.Controllers
 {
-    public class ImageController : Controller
+    public class ImageController : ApiController
     {
         private IMessageBoardRepository _repo;
 
@@ -22,11 +23,18 @@ namespace MessageBoard.Controllers
             _repo = repo;
         }
 
-        [HttpPost]
-        public ActionResult SaveTutorial(Image image)
-        {
-            return Json("Tutorial Saved", JsonRequestBehavior.AllowGet);
-        }
+        //[System.Web.Mvc.HttpPost]
+        //public ActionResult Post([FromBody]Image image)
+        //{
+        //    return Json("Tutorial Saved", JsonRequestBehavior.AllowGet);
+        //}
 
+        //testing
+        public HttpResponseMessage Post([FromBody] Image image)
+        {
+            //return Json("Tutorial Saved", JsonRequestBehavior.AllowGet);
+
+            return new HttpResponseMessage();
+        }
     }
 }

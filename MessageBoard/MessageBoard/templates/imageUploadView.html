@@ -1,54 +1,34 @@
 ﻿<form class="form-horizontal">
-    <h4>Tutorial</h4>
+    <h4>Image Upload</h4>
     <hr />
     <div class="form-group">
         <label for="title" class="col-md-2 control-label">Title</label>
         <div class="col-md-10">
-            <input type="text" data-ng-model="tutorial.title" name="title" class="form-control" />
+            <input type="text" data-ng-model="image.title" name="title" class="form-control" />
         </div>
     </div>
 
     <div class="form-group">
         <label for="description" class="col-md-2 control-label">Description</label>
         <div class="col-md-10">
-            <textarea data-ng-model="tutorial.description" name="description" class="form-control"></textarea>
+            <textarea data-ng-model="image.description" name="description" class="form-control"></textarea>
         </div>
     </div>
 
     <div class="form-group">
         <label for="attachment" class="col-md-2 control-label">Attachment</label>
         <div class="col-md-10">
-            <input type="file" name="attachment" class="form-control" data-ak-file-model="tutorial.attachment" />
+            <input type="file" name="attachment" class="form-control" data-ak-file-model="image.attachment" />
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="button" class="btn btn-primary" value="Save" data-ng-click="saveTutorial(tutorial)" />
+        <!--<div class="col-md-offset-2 col-md-10">
+                <input type="button" class="btn btn-primary" value="Save" data-ng-click="saveTutorial(imageUpload)" />
+            </div>-->
+        <div>
+            <input type="submit" class="btn" value="Save" data-ng-disabled="image.$invalid" />
+            <a href="/" class="btn">Cancel</a>
         </div>
     </div>
 </form>
-
-<!--<!DOCTYPE html>
-<html>
-<head>
-    <title>Upload Files using XMLHttpRequest - Minimal</title>
-    <script src="../js/uploadimage.js"></script>
-</head>
-
-<body>
-    <form id="form1" enctype="multipart/form-data" method="post" action="Upload.aspx">
-        <div class="row">
-            <label for="fileToUpload">Select a File to Upload</label><br />
-            <input type="file" name="fileToUpload" id="fileToUpload" onchange="fileSelected();" />
-        </div>
-        <div id="fileName"></div>
-        <div id="fileSize"></div>
-        <div id="fileType"></div>
-        <div class="row">
-            <input type="button" onclick="uploadFile()" value="Upload" />
-        </div>
-        <div id="progressNumber"></div>
-    </form>
-</body>
-</html>-->
