@@ -11,9 +11,9 @@
         </div>
         <div>
             <label for="challenge">Challenge Completed</label>
-            <textarea name="challenge" rows="5" cols="30" required="" data-ng-model="newPoints.challenge" data-ng-minlength="15" />
+            <textarea name="challenge" rows="5" cols="30" required="" data-ng-model="newPoints.challenge" data-ng-minlength="5" />
             <span class="error" data-ng-show="newPointsForm.challenge.$error.required">*</span>
-            <span class="error" data-ng-show="newPointsForm.challenge.$error.minlength">Minimum 10 Characters</span>
+            <span class="error" data-ng-show="newPointsForm.challenge.$error.minlength">Minimum 5 Characters</span>
         </div>
         <div>
             <label for="note">Additional Notes</label>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -39,7 +40,9 @@ namespace MessageBoard.Controllers
         {
             if (point.Created == default(DateTime))
             {
-                point.Created = DateTime.Now;
+                var timeZoneConvertedDateTime = TimeZoneInfo.ConvertTime (DateTime.Now,
+                 TimeZoneInfo.FindSystemTimeZoneById("Cen. Australia Standard Time"));
+                point.Created = timeZoneConvertedDateTime;
             }
 
             string name = "unknown";
