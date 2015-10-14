@@ -403,7 +403,7 @@ namespace MessageBoard.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, Surname = model.SurName};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, Surname = model.SurName, Admin = false };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

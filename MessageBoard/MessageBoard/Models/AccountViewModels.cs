@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace MessageBoard.Models
 {
@@ -16,6 +18,9 @@ namespace MessageBoard.Models
         [Required]
         [Display(Name = "SurName")]
         public string SurName { get; set; }
+
+        [HiddenInput]
+        public bool Admin { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -93,7 +98,7 @@ namespace MessageBoard.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -112,7 +117,7 @@ namespace MessageBoard.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

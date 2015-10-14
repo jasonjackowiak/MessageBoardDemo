@@ -14,7 +14,7 @@ namespace MessageBoard.Data
         //public byte[] ImageData { get; set; }
         //public string ImageMimeType { get; set; }
 
-        public int ImageId { get; set; }
+        public int? ImageId { get; set; }
 
         public ICollection<CharacterAttribute> Attributes { get; set; }
     }

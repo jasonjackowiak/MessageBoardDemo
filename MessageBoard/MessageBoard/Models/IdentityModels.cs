@@ -11,7 +11,8 @@ namespace MessageBoard.Models
     {
         //Custom properties
         public string FirstName { get; set; }
-        public string Surname { get; set; } 
+        public string Surname { get; set; }
+        public bool Admin { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
