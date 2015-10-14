@@ -110,11 +110,6 @@ namespace MessageBoard.Data
             return _context.CharacterClasses.Include("Attributes");
         }
 
-        public CharacterClass GetCharacterClassForCharacter(int Id)
-        {
-            return _context.CharacterClasses.Include("Attributes").FirstOrDefault(x => x.Id == Id);
-        }
-
         public IQueryable<Character> GetCharacters()
         {
             return _context.Characters;

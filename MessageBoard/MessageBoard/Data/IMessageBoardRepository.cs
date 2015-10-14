@@ -29,7 +29,6 @@ namespace MessageBoard.Data
 
         //character classes
         IQueryable<CharacterClass> GetCharacterClasses();
-        CharacterClass GetCharacterClassForCharacter(int id);
         bool AddCharacterClass(CharacterClass newCharacterClass);
 
         //images

@@ -26,16 +26,8 @@ namespace MessageBoard.Controllers
 
             var characterClasses = results
                 .OrderBy(t => t.Id)
-                .Take(5)
                 .ToList();
             return characterClasses;
-        }
-
-        public CharacterClass Get(int characterClassId)
-        {
-            CharacterClass result = _repo.GetCharacterClassForCharacter(characterClassId);
-
-            return result;
         }
 
         public HttpResponseMessage Post([FromBody]CharacterClass characterClass)
