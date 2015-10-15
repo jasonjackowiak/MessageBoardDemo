@@ -120,7 +120,7 @@ thing.factory("dataService", function ($http, $q) {
                 angular.copy(result.data, _characters);
                 //lil hacky to get the id for Chow's character. The -1 is because we are using an array object (starts at 0, not 1).
                 if (_characters.length > 0) {
-                    _chowsCharacterClassId = _characters[0].classId - 1;
+                    _chowsCharacterClassId = (_characters[0].classId - 1);
                 }
                 _isInit = true;
                 deferred.resolve();
@@ -138,7 +138,7 @@ thing.factory("dataService", function ($http, $q) {
             .then(function (result) {
                 //success
                 angular.copy(result.data, _characterclass);
-                if (_characterclass.length > 0) {
+                if (_characters.length > 0) {
                     angular.copy(_characterclass[_chowsCharacterClassId], _chowsCharacterClassObject);
                 }
                 _isInit = true;
