@@ -50,11 +50,25 @@
   padding: 5px;
   margin-bottom: 5px;
 }
-.title {
+.activity_title {
   font-size: 48px;
   font-weight: bold;
   color: black;
   text-shadow: 2px 2px 2px #888888;
   margin-bottom: 10px;
+}
+.main_title {
+  font-size: 60px;
+  font-weight: bold;
+  color: black;
+  text-shadow: 2px 2px 2px #888888;
+  margin-bottom: 10px;
+  line-height: 60px;
+}
+.total_points {
+  font-size: 72px;
+  color: black;
+  margin-top: 20px;
+  line-height: 72px;
 }
 /*# sourceMappingURL=Site.css.map */

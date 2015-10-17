@@ -1,15 +1,11 @@
-﻿<div>
-    <div ng-controller="characterController">
-        <div class="title row span12">
-            {{data.characters[0].name}}
-        </div>
-    </div>
-    <div style="font-size:72px;" ng-controller="totalPointsController" class="row span12">
-        <div>
-            {{totalPoints | number}} points
-        </div>
-    </div>
+﻿<div class="main_title row span12" ng-controller="characterController">
+    {{data.characters[0].name}}
 </div>
+<div class="total_points row span12" ng-controller="totalPointsController">
+    {{totalPoints | number}} points
+</div>
+
+<br/>
 
 <div class="message">
     <div ng-controller="characterClassController">
