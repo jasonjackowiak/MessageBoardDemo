@@ -1,36 +1,20 @@
-﻿<div class="message-header">
-    <h1>Chow's Bucks Summary</h1>
-    <div>
-        The stage is set: Jason has chosen a character, the weekend has begun. With many challenges before him, how will he fare?
-    </div>
-    <br />
-    <div>
-        <div ng-controller="authenticationController">
-            <div ng-if="isAuthenticated == true">
-                <a href="#/newpoints">Add New Points</a>
-            </div>
-            
+﻿<div>
+    <div ng-controller="characterController">
+        <div class="title row span12">
+            {{data.characters[0].name}}
         </div>
-
+    </div>
+    <div style="font-size:72px;" ng-controller="totalPointsController" class="row span12">
+        <div>
+            {{totalPoints | number}} points
+        </div>
     </div>
 </div>
 
-<div><br /></div>
-
-<div class="lead"><h3>Character Summary</h3></div>
 <div class="message">
-    <div ng-controller="characterController">
-        <div class="selectcharacter row">
-            <div class="contents span10">
-                <label>
-                    <b>Name:</b> {{data.characters[0].name}}
-                </label>
-            </div>
-        </div>
-    </div>
     <div ng-controller="characterClassController">
         <label>
-            <b>Type:</b> {{data.chowsCharacterClassObject.name}}
+            <b>Class:</b> {{data.chowsCharacterClassObject.name}}
         </label>
         <label>
             <b>Description:</b> {{data.chowsCharacterClassObject.description}}
@@ -41,30 +25,48 @@
             </label>
         </div>
     </div>
-
-    <div ng-controller="totalPointsController">
-        <label>
-            <b>Total Points:</b> {{totalPoints}}
-        </label>
-    </div>
 </div>
 
-<div><br /><br /></div>
+<div>
+    <br />
+    <div ng-controller="authenticationController">
+        <div ng-if="isAuthenticated == true">
+            <a href="#/newpoints">Add New Points</a>
+        </div>
+    </div>
+    <br />
+</div>
 
 <div class="progress progress-striped active" data-ng-show="isBusy">
     <div class="bar" style="width: 100%;"></div>
 </div>
 
 <div class="lead">
-    <h3>Activity History ({{ data.points.length }} events)</h3>
+
 </div>
-<div class="messages">
-    <div class="message row" data-ng-repeat="i in data.points">
-        <div class="contents span10">
-            {{i.characterAwardedTo}} earnt {{i.amount}} points for "{{i.challenge}}" (awarded by {{ i.awardedBy }}).
-        </div>
-        <div class="date span2">
-            {{ i.created | date:"medium"}}
+<div class="message row">
+    <div class="title row span12">Activity History ({{ data.points.length }} events)</div>
+    <div data-ng-repeat="i in data.points">
+        <div class="row">
+            <div class="span1">
+                <div ng-if="i.amount > 0">
+                    <b>+{{i.amount}}</b>pts
+                </div>
+            </div>
+            <div class="green_thing span6" ng-if="i.amount > 0">
+                {{i.challenge}}
+            </div>
+            <div class="span1">
+                <div ng-if="i.amount < 0">
+                    <b>{{i.amount}}</b>pts
+                </div>
+            </div>
+            <div class="red_thing span6" ng-if="i.amount < 0">
+                {{i.challenge}}
+            </div>
+            <div class="span3">
+                {{ i.created | date:"medium"}}
+            </div>
         </div>
     </div>
 </div>
