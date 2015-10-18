@@ -7,7 +7,7 @@
 
 <br/>
 
-<div class="message">
+<div class="message row">
     <div ng-controller="characterClassController">
         <label>
             <b>Class:</b> {{data.chowsCharacterClassObject.name}}
@@ -44,7 +44,7 @@
     <div class="title row span12">Activity History ({{ data.points.length }} events)</div>
     <div data-ng-repeat="i in data.points">
         <div class="row">
-            <div class="span1">
+            <div class="amount span1">
                 <div ng-if="i.amount > 0">
                     <b>+{{i.amount}}</b>pts
                 </div>
@@ -52,7 +52,7 @@
             <div class="green_thing span6" ng-if="i.amount > 0">
                 {{i.challenge}}
             </div>
-            <div class="span1">
+            <div class="amount span1">
                 <div ng-if="i.amount < 0">
                     <b>{{i.amount}}</b>pts
                 </div>
