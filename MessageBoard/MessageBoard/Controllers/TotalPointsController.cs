@@ -22,7 +22,7 @@ namespace MessageBoard.Controllers
             _repo = repo;
         }
 
-        public int Get()
+        public Object Get()
         {
             IQueryable<Point> results;
             results = _repo.GetPoints();
@@ -31,8 +31,16 @@ namespace MessageBoard.Controllers
             if (results.Any())
                 totalPoints += Enumerable.Sum(results, p => p.Amount);
 
-            return totalPoints;
+            double rawLevel = Math.Ceiling((double)totalPoints / 1000);
+            int level = Convert.ToInt32(rawLevel);
+
+            Object[] x = new Object[2];
+            x[0] = new {totalPoints};
+            x[1] = new {level};
+
+            return x;
         }
 
     }
+
 }

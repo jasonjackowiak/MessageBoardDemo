@@ -1,0 +1,3 @@
+﻿GO
+INSERT [dbo].[Points] ([Amount], [AwardedBy], [Challenge], [Created], [Note], [CharacterAwardedTo], [CharacterId]) VALUES (-1000, N'Jason', N'Good Jason has stolen all of ??'s points! 'You do not deserve Emma, I am the true Jason for her! I have the points to prove it. If you dare, take them back.'')
+GO

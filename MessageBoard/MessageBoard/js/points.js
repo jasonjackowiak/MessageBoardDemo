@@ -44,6 +44,7 @@ thing.factory("dataService", function ($http, $q) {
     var _chowsCharacterClassObject = [];
     var _image = [];
     var _isAuthenticated = false;
+    var _totalPointsAndLevelObject = [];
 
     var _isReady = function () {
         return _isInit;
@@ -54,9 +55,9 @@ thing.factory("dataService", function ($http, $q) {
         $http.get("api/v1/totalpoints")
             .then(function (result) {
                 //success
-                var things = result.data;
+                angular.copy(result.data, _totalPointsAndLevelObject);
                 _isInit = true;
-                deferred.resolve(things);
+                deferred.resolve();
             },
             function () {
                 //fail
@@ -286,7 +287,8 @@ thing.factory("dataService", function ($http, $q) {
         getTotalPoints: _getTotalPoints,
         image: _image,
         addImage: _addImage,
-        isAuthenticated: _isAuthenticated
+        isAuthenticated: _isAuthenticated,
+        totalPointsAndLevelObject: _totalPointsAndLevelObject
     };
 });
 
@@ -334,6 +336,7 @@ function pointsController($scope, $http, dataService) {
 
 function totalPointsController($scope, $http, dataService) {
     $scope.totalPoints = 0;
+    $scope.level = 1;
     $scope.isBusy = false;
 
     if (dataService.isReady() == false) {
@@ -341,8 +344,9 @@ function totalPointsController($scope, $http, dataService) {
         dataService.getTotalPoints()
             .then(function (result) {
                 //success
-                $scope.totalPoints = result;
-            },
+                //$scope.totalPoints = result;
+                //$scope.level = (result / 1000);
+                },
                 function () {
                     //fail
                     alert("could not load points total, sad face.");

@@ -1,8 +1,9 @@
 ﻿<div class="main_title row span12" ng-controller="characterController">
     {{data.characters[0].name}}
+    <div ng-controller="totalPointsController"> - level {{data.totalPointsAndLevelObject[1].level}}</div>
 </div>
 <div class="total_points row span12" ng-controller="totalPointsController">
-    {{totalPoints | number}} points
+     with {{data.totalPointsAndLevelObject[0].totalPoints | number}} points
 </div>
 
 <br/>

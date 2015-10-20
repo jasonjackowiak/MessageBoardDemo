@@ -347,6 +347,7 @@
     <Content Include="js\points.js" />
     <Content Include="js\Services\entity.js" />
     <Content Include="ReferenceData\CharacterAttribute.txt" />
+    <Content Include="ReferenceData\StealPoints.txt" />
     <Content Include="ReferenceData\CharacterClass.txt" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
