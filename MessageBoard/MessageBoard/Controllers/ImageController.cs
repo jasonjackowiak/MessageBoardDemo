@@ -23,12 +23,6 @@ namespace MessageBoard.Controllers
             _repo = repo;
         }
 
-        //[System.Web.Mvc.HttpPost]
-        //public ActionResult Post([FromBody]Image image)
-        //{
-        //    return Json("Tutorial Saved", JsonRequestBehavior.AllowGet);
-        //}
-
         public IEnumerable<Image> Get()
         {
             IQueryable<Image> results = _repo.GetImages();

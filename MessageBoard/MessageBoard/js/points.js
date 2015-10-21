@@ -344,8 +344,6 @@ function totalPointsController($scope, $http, dataService) {
         dataService.getTotalPoints()
             .then(function (result) {
                 //success
-                //$scope.totalPoints = result;
-                //$scope.level = (result / 1000);
                 },
                 function () {
                     //fail
@@ -430,7 +428,6 @@ function newCharacterController($scope, $http, $window, dataService) {
 };
 
 function newCharacterClassController($scope, $http, $window, dataService) {
-    //$scope.newCharacter = {};
 
     $scope.save = function () {
         dataService.addCharacterClass($scope.newCharacterClass)
@@ -461,7 +458,7 @@ function singleCharacterController($scope, dataService, $window) {
 };
 
 function newImageController($scope, dataService, $window) {
-    //$scope.newImage = null;
+    $scope.newImage = {};
 
     $scope.save = function() {
         dataService.addImage($scope.newImage)

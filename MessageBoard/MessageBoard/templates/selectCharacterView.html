@@ -2,25 +2,21 @@
     <fieldset>
         <div class="message-header">
             <h1>Chow, select your character class!</h1>
-            <!--<div class="lead">Choose from one of the {{ data.characterclasses.length }} awesome classes.</div>-->
         </div>
+
         <div class="progress progress-striped active" data-ng-show="isBusy">
             <div class="bar" style="width: 100%;"></div>
         </div>
 
         <div ng-controller="characterClassController">
-            <div class="selectcharacter row" data-ng-repeat="i in data.characterclasses">
+            <div class="row" data-ng-repeat="i in data.characterclasses">
                 <div class="message">
-                    <div class="contents">
-                        <label>
-                            <b>Name:</b> {{i.name}} <input type="checkbox" ng-model="newCharacter.classid" ng-true-value="{{i.id}}">
-                        </label>
-                    </div>
-                    <div class="contents">
-                        <label>
-                            <b>Description:</b> {{i.description}}
-                        </label>
-                    </div>
+                    <label>
+                        <b>Name:</b> {{i.name}} <input type="checkbox" ng-model="newCharacter.classid" ng-true-value="{{i.id}}">
+                    </label>
+                    <label>
+                        <b>Description:</b> {{i.description}}
+                    </label>
                     <div data-ng-repeat="x in i.attributes">
                         <label>
                             <b>Ability:</b> {{x.description}}
@@ -29,7 +25,6 @@
                 </div>
             </div>
         </div>
-
 
         <br />
         <div>

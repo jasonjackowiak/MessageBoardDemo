@@ -1,17 +1,31 @@
 ﻿SET IDENTITY_INSERT [dbo].[CharacterAttributes] ON 
+GO
 
+INSERT [dbo].[CharacterAttributes] ([Id], [Description], [Type], [CharacterClass_Id]) VALUES (1, N'+10 RAWR! Perform 20 burpies. Redeemable at any time.', N'spell', 3)
 GO
-INSERT [dbo].[CharacterAttributes] ([Id], [Description], [Type], [CharacterClass_Id]) VALUES (2, N'10 pushups', N'spell', 3)
+INSERT [dbo].[CharacterAttributes] ([Id], [Description], [Type], [CharacterClass_Id]) VALUES (2, N'+10% for physical challenges.', N'constant', 3)
 GO
+
 INSERT [dbo].[CharacterAttributes] ([Id], [Description], [Type], [CharacterClass_Id]) VALUES (3, N'+10 for every discount or deal negotiated.', N'constant', 1)
 GO
-INSERT [dbo].[CharacterAttributes] ([Id], [Description], [Type], [CharacterClass_Id]) VALUES (4, N'+50% bonus points for a challenge. 3 uses.', N'spell', 1)
+INSERT [dbo].[CharacterAttributes] ([Id], [Description], [Type], [CharacterClass_Id]) VALUES (4, N'+50% Asian Powah! Bonus points for a challenge. 3 uses.', N'spell', 1)
 GO
-INSERT [dbo].[CharacterAttributes] ([Id], [Description], [Type], [CharacterClass_Id]) VALUES (5, N'-10 (1st use FREE) Happy Bucks Day Song - Demand the singing of 'Happy Bucks Day' from all present. Redeemable at any time.', N'spell', 4)
+INSERT [dbo].[CharacterAttributes] ([Id], [Description], [Type], [CharacterClass_Id]) VALUES (5, N'+10% for maths, rice, game and table-tennis challenges.', N'constant', 1)
 GO
-INSERT [dbo].[CharacterAttributes] ([Id], [Description], [Type], [CharacterClass_Id]) VALUES (6, N'-20 Demand an immediate Yiros delivery. 1 use only. Redeemable at any time.', N'spell', 2)
+
+INSERT [dbo].[CharacterAttributes] ([Id], [Description], [Type], [CharacterClass_Id]) VALUES (6, N'-10 (1st use FREE) Happy Bucks Day Song - Demand the singing of ''Happy Bucks Day'' from all present. Redeemable at any time.', N'spell', 4)
 GO
-INSERT [dbo].[CharacterAttributes] ([Id], [Description], [Type], [CharacterClass_Id]) VALUES (6, N'-5 Drink be gone! Force someone to finish their drink. Redeemable at any time.', N'spell', 2)
+INSERT [dbo].[CharacterAttributes] ([Id], [Description], [Type], [CharacterClass_Id]) VALUES (7, N'+10% for musical and dancing challenges.', N'constant', 4)
 GO
+
+INSERT [dbo].[CharacterAttributes] ([Id], [Description], [Type], [CharacterClass_Id]) VALUES (8, N'-20 Demand an immediate Yiros delivery. 1 use only. Redeemable at any time.', N'spell', 2)
+GO
+INSERT [dbo].[CharacterAttributes] ([Id], [Description], [Type], [CharacterClass_Id]) VALUES (9, N'-5 Drink be gone! Force someone to finish their drink. Redeemable at any time.', N'spell', 2)
+GO
+INSERT [dbo].[CharacterAttributes] ([Id], [Description], [Type], [CharacterClass_Id]) VALUES (10, N'+10 Hot stuff! Eat a whole chilli. Redeemable at any time.', N'spell', 2)
+GO
+INSERT [dbo].[CharacterAttributes] ([Id], [Description], [Type], [CharacterClass_Id]) VALUES (11, N'+10% for cooking and eating challenges.', N'constant', 2)
+GO
+
 SET IDENTITY_INSERT [dbo].[CharacterAttributes] OFF
 GO
