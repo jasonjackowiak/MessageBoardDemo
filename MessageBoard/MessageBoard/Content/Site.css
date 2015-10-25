@@ -35,9 +35,6 @@
   .main {
     margin-left: 0;
   }
-  .pull-right {
-    display: none;
-  }
 }
 .green_thing {
   border: 1px solid darkgreen;

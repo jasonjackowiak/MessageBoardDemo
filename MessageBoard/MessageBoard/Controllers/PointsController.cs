@@ -30,7 +30,6 @@ namespace MessageBoard.Controllers
 
             var points = results
                 .OrderByDescending(t => t.Created)
-                .Take(25)
                 .ToList();
 
             return points ?? null;
